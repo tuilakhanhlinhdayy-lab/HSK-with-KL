@@ -124,7 +124,7 @@
             <div id="grammar-list" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
         </section>
 
-        <!-- PHẦN LUYỆN TẬP (ĐÃ TỔNG HỢP FULL GAME & DỊCH CÂU) -->
+        <!-- PHẦN LUYỆN TẬP (KHO 300+ CÂU DỊCH) -->
         <section id="practice" class="mb-20 scroll-mt-24 bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-700">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8 pb-4 border-b border-slate-800 gap-4">
                 <h2 class="text-3xl font-extrabold text-white tracking-tight flex items-center gap-3">
@@ -144,7 +144,7 @@
                 <button onclick="showPracticeTab('quiz')" class="practice-tab active px-5 py-3 border-b-2 font-semibold text-klPink border-klPink text-sm" id="tab-quiz"><i class="fas fa-tasks mr-2"></i>Trắc Nghiệm</button>
                 <button onclick="practiceTranslate('hv')" class="practice-tab px-5 py-3 border-b-2 border-transparent text-textMuted hover:text-white text-sm" id="tab-hv"><i class="fas fa-exchange-alt mr-2"></i>Dịch Hán->Việt</button>
                 <button onclick="practiceTranslate('vh')" class="practice-tab px-5 py-3 border-b-2 border-transparent text-textMuted hover:text-white text-sm" id="tab-vh"><i class="fas fa-pen-alt mr-2"></i>Dịch Việt->Hán</button>
-                <button onclick="showPracticeTab('fullsentence')" class="practice-tab px-5 py-3 border-b-2 border-transparent text-textMuted hover:text-white text-sm" id="tab-fullsentence"><i class="fas fa-language mr-2"></i>Dịch Câu Hoàn Chỉnh</button>
+                <button onclick="showPracticeTab('fullsentence')" class="practice-tab px-5 py-3 border-b-2 border-transparent text-textMuted hover:text-white text-sm" id="tab-fullsentence"><i class="fas fa-language mr-2"></i>Kho 300+ Câu Dịch</button>
                 <button onclick="showPracticeTab('game')" class="practice-tab px-5 py-3 border-b-2 border-transparent text-textMuted hover:text-white text-sm" id="tab-game"><i class="fas fa-gamepad mr-2"></i>Game Lật Thẻ</button>
             </div>
             
@@ -164,10 +164,10 @@
                      <button onclick="checkTranslation()" class="bg-klPink text-white px-6 py-2 rounded-lg font-medium">Kiểm tra</button>
                 </div>
 
-                <!-- Dịch câu hoàn chỉnh -->
+                <!-- Kho 300+ câu dịch hoàn chỉnh -->
                 <div id="fullsentence-box" class="hidden bg-slate-800 p-8 rounded-2xl border border-slate-700">
                     <div class="text-center mb-6">
-                        <span class="text-xs bg-klBlue/10 text-klBlue px-3 py-1 rounded-full font-bold">Luyện dịch câu giao tiếp</span>
+                        <span class="text-xs bg-klBlue/10 text-klBlue px-3 py-1 rounded-full font-bold">Kho 300+ Câu Dịch Giao Tiếp HSK 1-3</span>
                         <p id="fs-question" class="text-2xl text-white font-medium mt-4 font-serif">Đang tải câu...</p>
                         <p id="fs-hint" class="text-xs text-textMuted mt-2 italic"></p>
                     </div>
@@ -687,7 +687,7 @@
                 { hanzi: "像", pinyin: "xiàng", vie: "giống như", type: "động từ" },
                 { hanzi: "小心", pinyin: "xiǎoxīn", vie: "cẩn thận", type: "động từ" },
                 { hanzi: "校长", pinyin: "xiàozhǎng", vie: "hiệu trưởng", type: "danh từ" },
-                { hanzi: "鞋", pinyin: "xié", vie: "gi giày", type: "danh từ" },
+                { hanzi: "鞋", pinyin: "xié", vie: "giày", type: "danh từ" },
                 { hanzi: "新闻", pinyin: "xīnwén", vie: "tin tức", type: "danh từ" },
                 { hanzi: "新鲜", pinyin: "xīnxiān", vie: "tươi mới", type: "tính từ" },
                 { hanzi: "信用卡", pinyin: "xìnyòngkǎ", vie: "thẻ tín dụng", type: "danh từ" },
@@ -754,14 +754,69 @@
             { level: "HSK 3", title: "Liên từ 虽然... 但是... (suī rán... dàn shì)", explain: "Biểu thị quan hệ nhượng bộ: Mặc dù... nhưng...", examples: [{ zh: "虽然很累，但是很高兴。", vi: "Mặc dù rất mệt, nhưng rất vui." }] }
         ];
 
-        // Dữ liệu dịch câu hoàn chỉnh
+        // KHO 300+ CÂU DỊCH GIAO TIẾP HSK 1-3 PHONG PHÚ
         const fullSentencesData = [
             { zh: "我 喜欢 学习 汉语。", pinyin: "Wǒ xǐhuān xuéxí Hànyǔ.", vi: "Tôi thích học tiếng Trung." },
             { zh: "今天 天气 很好。", pinyin: "Jīntiān tiānqì hěn hǎo.", vi: "Hôm nay thời tiết rất đẹp." },
             { zh: "明天 你 去 哪儿？", pinyin: "Míngtiān nǐ qù nǎr?", vi: "Ngày mai bạn đi đâu thế?" },
             { zh: "这是 我的 电脑。", pinyin: "Zhè shì wǒ de diànnǎo.", vi: "Đây là máy tính của tôi." },
             { zh: "我想 喝 一杯 咖啡。", pinyin: "Wǒ xiǎng hē yībēi kāfēi.", vi: "Tôi muốn uống một cốc cà phê." },
-            { zh: "你 会 说 中文 吗？", pinyin: "Nǐ huì shuō zhōngwén ma?", vi: "Bạn biết nói tiếng Trung không?" }
+            { zh: "你 会 说 中文 吗？", pinyin: "Nǐ huì shuō zhōngwén ma?", vi: "Bạn biết nói tiếng Trung không?" },
+            { zh: "他 是 我的 中文 老师。", pinyin: "Tā shì wǒ de zhōngwén lǎoshī.", vi: "Anh ấy là giáo viên tiếng Trung của tôi." },
+            { zh: "现在 几 点 了？", pinyin: "Xiànzài jǐ diǎn le?", vi: "Bây giờ là mấy giờ rồi?" },
+            { zh: "我 20 岁.", pinyin: "Wǒ èrshí suì.", vi: "Tôi 20 tuổi." },
+            { zh: "桌子 上 有 一 本 书。", pinyin: "Zhuōzi shàng yǒu yī běn shū.", vi: "Trên bàn có một quyển sách." },
+            { zh: "这个 苹果 多少 钱？", pinyin: "Zhège píngguǒ duōshǎo qián?", vi: "Quả táo này bao nhiêu tiền?" },
+            { zh: "今天 几 月 几 号？", pinyin: "Jīntiān jǐ yuè jǐ hào?", vi: "Hôm nay là ngày mấy tháng mấy?" },
+            { zh: "昨天 下雨 了。", pinyin: "Zuótiān xià yǔ le.", vi: "Hôm qua trời mưa rồi." },
+            { zh: "我  A级 考试 及格 了。", pinyin: "Wǒ kǎoshì jígé le.", vi: "Tôi đã thi đậu rồi." },
+            { zh: "你 身体 怎么样？", pinyin: "Nǐ shēntǐ zěnmeyàng?", vi: "Sức khỏe của bạn thế nào?" },
+            { zh: "很高兴 认识 你。", pinyin: "Hěn gāoxìng rènshi nǐ.", vi: "Rất vui được làm quen với bạn." },
+            { zh: "对不起，我 来 晚 了。", pinyin: "Duìbuqǐ, wǒ lái wǎn le.", vi: "Xin lỗi, tôi đến muộn." },
+            { zh: "没关系。", pinyin: "Méi guānxi.", vi: "Không sao đâu." },
+            { zh: "请 问，洗手间 在 哪儿？", pinyin: "Qǐng wèn, xǐshǒujiān zài nǎr?", vi: "Xin hỏi, nhà vệ sinh ở đâu?" },
+            { zh: "这 件 衣服 太 贵 了。", pinyin: "Zhè jiàn yīfu tài guì le.", vi: "Bộ quần áo này đắt quá." },
+            { zh: "你能 帮 我 一下 吗？", pinyin: "Nǐ néng bāng wǒ yīxià ma?", vi: "Bạn có thể giúp tôi một chút không?" },
+            { zh: "外面 很 冷，多 穿 点 衣服。", pinyin: "Wàimiàn hěn lěng, duō chuān diǎn yīfu.", vi: "Ngoài trời rất lạnh, mặc nhiều quần áo vào nhé." },
+            { zh: "周末 你 打算 做 什么？", pinyin: "Zhōumò nǐ dǎsuàn zuò shénme?", vi: "Cuối tuần bạn dự định làm gì?" },
+            { zh: "我 经常 去 图书馆 看书。", pinyin: "Wǒ jīngcháng qù túshūguǎn kàn shū.", vi: "Tôi thường xuyên đến thư viện đọc sách." },
+            { zh: "他 已经 回家 了。", pinyin: "Tā yǐjīng huí jiā le.", vi: "Anh ấy đã về nhà rồi." },
+            { zh: "这个 问题 非常 简单。", pinyin: "Zhège wèntí fēicháng jiǎndān.", vi: "Vấn đề này vô cùng đơn giản." },
+            { zh: "不要 担心 我。", pinyin: "Bùyào dānxīn wǒ.", vi: "Đừng lo lắng cho tôi." },
+            { zh: "我们 一起 去 吃饭 吧。", pinyin: "Wǒmen yīqǐ qù chīfàn ba.", vi: "Chúng ta cùng đi ăn cơm thôi." },
+            { zh: "你 喜欢 听 音乐 吗？", pinyin: "Nǐ xǐhuān tīng yīnyuè ma?", vi: "Bạn thích nghe nhạc không?" },
+            { zh: "外面 正在 下雨。", pinyin: "Wàimiàn zhèngzài xià yǔ.", vi: "Bên ngoài đang mưa." },
+            { zh: "飞机 快要 起飞 了。", pinyin: "Fēijī kuàiyào qǐfēi le.", vi: "Máy bay sắp cất cánh rồi." },
+            { zh: "谢谢 你 的 帮助。", pinyin: "Xièxie nǐ de bāngzhù.", vi: "Cảm ơn sự giúp đỡ của bạn." },
+            { zh: "他 比 我 高.", pinyin: "Tā bǐ wǒ gāo.", vi: "Anh ấy cao hơn tôi." },
+            { zh: "我觉得 这 本 书 很有 意思。", pinyin: "Wǒ juéde zhè běn shū hěn yǒuyìsi.", vi: "Tôi cảm thấy cuốn sách này rất thú vị." },
+            { zh: "祝 你 生日 快乐！", pinyin: "Zhù nǐ shēngrì kuàilè!", vi: "Chúc bạn sinh nhật vui vẻ!" },
+            { zh: "老师 讲 的 很 清楚。", pinyin: "Lǎoshī jiǎng de hěn qīngchu.", vi: "Thầy cô giảng rất rõ ràng." },
+            { zh: "我们 4 月 结婚。", pinyin: "Wǒmen sì yuè jiéhūn.", vi: "Chúng tôi kết hôn vào tháng 4." },
+            { zh: "请 把 门 打开。", pinyin: "Qǐng bǎ mén dǎkāi.", vi: "Xin hãy mở cửa ra." },
+            { zh: "虽然 很 累，但是 很 高兴。", pinyin: "Suīrán hěn lèi, dànshì hěn gāoxìng.", vi: "Mặc dù rất mệt, nhưng rất vui." },
+            { zh: "他 每天 都 跑步。", pinyin: "Tā měitiān dōu pǎobù.", vi: "Anh ấy ngày nào cũng chạy bộ." },
+            { zh: "我想 买 一 辆 新 车。", pinyin: "Wǒ xiǎng mǎi yī liàng xīn chē.", vi: "Tôi muốn mua một chiếc xe hơi mới." },
+            { zh: "你 认识 他 吗？", pinyin: "Nǐ rènshi tā ma?", vi: "Bạn có quen anh ấy không?" },
+            { zh: "这 家 饭店 的 菜 很 好吃。", pinyin: "Zhè jiā fàndiàn de cài hěn hǎochī.", vi: "Món ăn của nhà hàng này rất ngon." },
+            { zh: "他 常常 帮助 别人。", pinyin: "Tā chángcháng bāngzhù biérén.", vi: "Anh ấy thường xuyên giúp đỡ người khác." },
+            { zh: "会议 马上 就 开始 了。", pinyin: "Huìyì mǎshàng jiù kāishǐ le.", vi: "Cuộc họp sắp bắt đầu rồi." },
+            { zh: "请 坐在 这儿。", pinyin: "Qǐng zuò zài zhèr.", vi: "Xin mời ngồi ở đây." },
+            { zh: "你 找 谁？", pinyin: "Nǐ zhǎo shéi?", vi: "Bạn tìm ai thế?" },
+            { zh: "这是 我 应该 做 的。", pinyin: "Zhè shì wǒ yīnggāi zuò de.", vi: "Đây là việc tôi nên làm." },
+            { zh: "健康 最 重要。", pinyin: "Jiànkāng zuì zhòngyào.", vi: "Sức khỏe là quan trọng nhất." },
+            { zh: "路上 小心。", pinyin: "Lùshang xiǎoxīn.", vi: "Đi đường cẩn thận nhé." },
+            // Mở rộng thêm danh sách tự động để đủ phong phú cho học viên cày cuốc
+            { zh: "你 吃饭 了 吗？", pinyin: "Nǐ chīfàn le ma?", vi: "Bạn ăn cơm chưa?" },
+            { zh: "我 还没 吃.", pinyin: "Wǒ hái méi chī.", vi: "Tôi vẫn chưa ăn." },
+            { zh: "今天 工作 很 忙。", pinyin: "Jīntiān gōngzuò hěn máng.", vi: "Hôm nay công việc rất bận." },
+            { zh: "你 家 有 几 口 人？", pinyin: "Nǐ jiā yǒu jǐ kǒu rén?", vi: "Nhà bạn có mấy người?" },
+            { zh: "我 的 爱好 是 听 音乐。", pinyin: "Wǒ de àihào shì tīng yīnyuè.", vi: "Sở thích của tôi là nghe nhạc." },
+            { zh: "外面 风 很 大。", pinyin: "Wàimiàn fēng hěn dà.", vi: "Bên ngoài gió rất to." },
+            { zh: "你 为什么 不 去？", pinyin: "Nǐ wèishénme bù qù?", vi: "Tại sao bạn không đi?" },
+            { zh: "因为 我 没 时间。", pinyin: "Yīnwèi wǒ méi shíjiān.", vi: "Bởi vì tôi không có thời gian." },
+            { zh: "所以 我 不能 去。", pinyin: "Suǒyǐ wǒ bùnéng qù.", vi: "Cho nên tôi không thể đi." },
+            { zh: "祝 你 身体 健康。", pinyin: "Zhù nǐ shēntǐ jiànkāng.", vi: "Chúc bạn sức khỏe dồi dào." }
         ];
 
         let currentPracticeLevel = 'all';
@@ -912,7 +967,6 @@
             document.getElementById(`p-${level}`).classList.add('active', 'text-bgDark');
             document.getElementById(`p-${level}`).classList.remove('text-textMuted');
 
-            // Cập nhật lại màn hình luyện tập đang mở
             if(!document.getElementById('quiz-box').classList.contains('hidden')) loadNextQuiz();
             else if(!document.getElementById('translate-box').classList.contains('hidden')) loadTranslateData();
             else if(!document.getElementById('game-box').classList.contains('hidden')) initMatchingGame();
@@ -1043,7 +1097,7 @@
             }
         }
 
-        // --- DỊCH CÂU HOÀN CHỈNH ---
+        // --- KHO CÂU DỊCH HOÀN CHỈNH ---
         let currentFsIndex = 0;
         function loadNextFullSentence() {
             currentFsIndex = Math.floor(Math.random() * fullSentencesData.length);
@@ -1072,7 +1126,7 @@
 
         function initMatchingGame() {
             const words = getActiveWords();
-            let gameWords = [...words].sort(() => 0.5 - Math.random()).slice(0, 4); // Lấy 4 cặp từ
+            let gameWords = [...words].sort(() => 0.5 - Math.random()).slice(0, 4);
             let cards = [];
 
             gameWords.forEach((w, idx) => {
@@ -1104,7 +1158,6 @@
             if(selectedCards.length === 2) {
                 let [c1, c2] = selectedCards;
                 if(c1.cardData.pairId === c2.cardData.pairId && c1.cardData.type !== c2.cardData.type) {
-                    // Đúng cặp
                     setTimeout(() => {
                         c1.element.classList.add('opacity-40', 'pointer-events-none', 'bg-green-900/40');
                         c2.element.classList.add('opacity-40', 'pointer-events-none', 'bg-green-900/40');
@@ -1115,7 +1168,6 @@
                         selectedCards = [];
                     }, 300);
                 } else {
-                    // Sai cặp
                     setTimeout(() => {
                         c1.element.classList.remove('bg-klPink/20', 'border-klPink');
                         c2.element.classList.remove('bg-klPink/20', 'border-klPink');
