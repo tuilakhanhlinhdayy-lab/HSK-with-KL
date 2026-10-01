@@ -124,7 +124,7 @@
             <div id="grammar-list" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
         </section>
 
-        <!-- PHẦN LUYỆN TẬP -->
+        <!-- PHẦN LUYỆN TẬP (ĐÃ TỔNG HỢP FULL GAME & DỊCH CÂU) -->
         <section id="practice" class="mb-20 scroll-mt-24 bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-700">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8 pb-4 border-b border-slate-800 gap-4">
                 <h2 class="text-3xl font-extrabold text-white tracking-tight flex items-center gap-3">
@@ -139,23 +139,59 @@
                 </div>
             </div>
 
+            <!-- Các Tab Luyện Tập -->
             <div class="flex border-b border-slate-700 mb-10 gap-2 flex-wrap">
-                <button onclick="showPracticeTab('quiz')" class="practice-tab active px-6 py-3 border-b-2 font-semibold text-klPink border-klPink" id="tab-quiz"><i class="fas fa-tasks mr-2"></i>Trắc Nghiệm Từ Vựng</button>
-                <button onclick="practiceTranslate('hv')" class="practice-tab px-6 py-3 border-b-2 border-transparent text-textMuted hover:text-white" id="tab-hv"><i class="fas fa-exchange-alt mr-2"></i>Dịch Hán->Việt</button>
-                <button onclick="practiceTranslate('vh')" class="practice-tab px-6 py-3 border-b-2 border-transparent text-textMuted hover:text-white" id="tab-vh"><i class="fas fa-pen-alt mr-2"></i>Dịch Việt->Hán</button>
+                <button onclick="showPracticeTab('quiz')" class="practice-tab active px-5 py-3 border-b-2 font-semibold text-klPink border-klPink text-sm" id="tab-quiz"><i class="fas fa-tasks mr-2"></i>Trắc Nghiệm</button>
+                <button onclick="practiceTranslate('hv')" class="practice-tab px-5 py-3 border-b-2 border-transparent text-textMuted hover:text-white text-sm" id="tab-hv"><i class="fas fa-exchange-alt mr-2"></i>Dịch Hán->Việt</button>
+                <button onclick="practiceTranslate('vh')" class="practice-tab px-5 py-3 border-b-2 border-transparent text-textMuted hover:text-white text-sm" id="tab-vh"><i class="fas fa-pen-alt mr-2"></i>Dịch Việt->Hán</button>
+                <button onclick="showPracticeTab('fullsentence')" class="practice-tab px-5 py-3 border-b-2 border-transparent text-textMuted hover:text-white text-sm" id="tab-fullsentence"><i class="fas fa-language mr-2"></i>Dịch Câu Hoàn Chỉnh</button>
+                <button onclick="showPracticeTab('game')" class="practice-tab px-5 py-3 border-b-2 border-transparent text-textMuted hover:text-white text-sm" id="tab-game"><i class="fas fa-gamepad mr-2"></i>Game Lật Thẻ</button>
             </div>
             
             <div id="practice-content">
+                 <!-- Trắc nghiệm từ vựng -->
                  <div id="quiz-box" class="bg-slate-800 p-8 rounded-2xl border border-slate-700">
                     <p id="quiz-question" class="text-2xl text-white font-medium mb-8">Câu hỏi?</p>
                     <div id="quiz-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
                     <div id="quiz-feedback" class="mt-6 text-lg font-medium text-center h-8"></div>
                  </div>
+
+                <!-- Dịch từ đơn -->
                 <div id="translate-box" class="hidden bg-slate-800 p-8 rounded-2xl border border-slate-700 text-center">
                      <p id="trans-source" class="text-4xl font-serif text-white mb-6"></p>
                      <input type="text" id="trans-input" placeholder="Nhập câu trả lời..." class="w-full max-w-md px-5 py-3 rounded-lg bg-bgDark border border-slate-700 text-white mb-4 focus:ring-2 focus:ring-klPink focus:border-klPink outline-none">
                      <div id="trans-result" class="text-xl font-medium mb-6 h-8 text-klBlue"></div>
                      <button onclick="checkTranslation()" class="bg-klPink text-white px-6 py-2 rounded-lg font-medium">Kiểm tra</button>
+                </div>
+
+                <!-- Dịch câu hoàn chỉnh -->
+                <div id="fullsentence-box" class="hidden bg-slate-800 p-8 rounded-2xl border border-slate-700">
+                    <div class="text-center mb-6">
+                        <span class="text-xs bg-klBlue/10 text-klBlue px-3 py-1 rounded-full font-bold">Luyện dịch câu giao tiếp</span>
+                        <p id="fs-question" class="text-2xl text-white font-medium mt-4 font-serif">Đang tải câu...</p>
+                        <p id="fs-hint" class="text-xs text-textMuted mt-2 italic"></p>
+                    </div>
+                    <div class="max-w-xl mx-auto text-center">
+                        <input type="text" id="fs-input" placeholder="Nhập bản dịch tiếng Việt hoặc Pinyin..." class="w-full px-5 py-3 rounded-lg bg-bgDark border border-slate-700 text-white mb-4 focus:ring-2 focus:ring-klPink outline-none">
+                        <div id="fs-result" class="text-lg font-medium mb-4 h-8 text-klPink"></div>
+                        <div class="flex justify-center gap-3">
+                            <button onclick="checkFullSentence()" class="bg-klPink text-white px-6 py-2.5 rounded-lg font-medium shadow-lg">Kiểm tra</button>
+                            <button onclick="loadNextFullSentence()" class="bg-slate-700 text-white px-6 py-2.5 rounded-lg font-medium hover:bg-slate-600">Câu tiếp theo</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game lật thẻ nhanh -->
+                <div id="game-box" class="hidden bg-slate-800 p-8 rounded-2xl border border-slate-700 text-center">
+                    <div class="flex justify-between items-center mb-6 flex-wrap gap-4">
+                        <div class="text-left">
+                            <h3 class="text-xl font-bold text-white">Thử Thách Lật Thẻ Ghép Cặp</h3>
+                            <p class="text-xs text-textMuted">Chọn 1 thẻ chữ Hán và 1 thẻ nghĩa tiếng Việt tương ứng!</p>
+                        </div>
+                        <button onclick="initMatchingGame()" class="bg-klBlue text-bgDark px-5 py-2 rounded-xl font-bold text-sm">Chơi Lại / Đổi Từ</button>
+                    </div>
+                    <div id="matching-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mb-6"></div>
+                    <div id="game-status" class="text-lg font-medium text-klPink h-7"></div>
                 </div>
             </div>
         </section>
@@ -651,7 +687,7 @@
                 { hanzi: "像", pinyin: "xiàng", vie: "giống như", type: "động từ" },
                 { hanzi: "小心", pinyin: "xiǎoxīn", vie: "cẩn thận", type: "động từ" },
                 { hanzi: "校长", pinyin: "xiàozhǎng", vie: "hiệu trưởng", type: "danh từ" },
-                { hanzi: "鞋", pinyin: "xié", vie: "giày", type: "danh từ" },
+                { hanzi: "鞋", pinyin: "xié", vie: "gi giày", type: "danh từ" },
                 { hanzi: "新闻", pinyin: "xīnwén", vie: "tin tức", type: "danh từ" },
                 { hanzi: "新鲜", pinyin: "xīnxiān", vie: "tươi mới", type: "tính từ" },
                 { hanzi: "信用卡", pinyin: "xìnyòngkǎ", vie: "thẻ tín dụng", type: "danh từ" },
@@ -717,6 +753,18 @@
             { level: "HSK 3", title: "Câu chữ 把 (bǎ)", explain: "Nhấn mạnh vào kết quả hoặc sự thay đổi của tân ngữ. Cấu trúc: S + 把 + O + V + thành phần khác.", examples: [{ zh: "请把 门 打开。", vi: "Xin hãy mở cửa ra." }] },
             { level: "HSK 3", title: "Liên từ 虽然... 但是... (suī rán... dàn shì)", explain: "Biểu thị quan hệ nhượng bộ: Mặc dù... nhưng...", examples: [{ zh: "虽然很累，但是很高兴。", vi: "Mặc dù rất mệt, nhưng rất vui." }] }
         ];
+
+        // Dữ liệu dịch câu hoàn chỉnh
+        const fullSentencesData = [
+            { zh: "我 喜欢 学习 汉语。", pinyin: "Wǒ xǐhuān xuéxí Hànyǔ.", vi: "Tôi thích học tiếng Trung." },
+            { zh: "今天 天气 很好。", pinyin: "Jīntiān tiānqì hěn hǎo.", vi: "Hôm nay thời tiết rất đẹp." },
+            { zh: "明天 你 去 哪儿？", pinyin: "Míngtiān nǐ qù nǎr?", vi: "Ngày mai bạn đi đâu thế?" },
+            { zh: "这是 我的 电脑。", pinyin: "Zhè shì wǒ de diànnǎo.", vi: "Đây là máy tính của tôi." },
+            { zh: "我想 喝 一杯 咖啡。", pinyin: "Wǒ xiǎng hē yībēi kāfēi.", vi: "Tôi muốn uống một cốc cà phê." },
+            { zh: "你 会 说 中文 吗？", pinyin: "Nǐ huì shuō zhōngwén ma?", vi: "Bạn biết nói tiếng Trung không?" }
+        ];
+
+        let currentPracticeLevel = 'all';
 
         const savedUser = localStorage.getItem('hskUsername') || 'Rin';
         document.getElementById('main-username').innerText = savedUser;
@@ -836,13 +884,7 @@
             });
         }
 
-        let currentPracticeLevel = 'all';
-        let currentQuizIndex = 0;
-        const quizBox = document.getElementById('quiz-box');
-        const quizQuestion = document.getElementById('quiz-question');
-        const quizOptions = document.getElementById('quiz-options');
-        const quizFeedback = document.getElementById('quiz-feedback');
-
+        // LỜI KHÍCH LỆ BỒ IU RIN
         const praiseMessages = [
             "OMG giỏi quáaaa! Thưởng cái ôm nhó ❤️",
             "Trùi ui người yêu ai mà thông minh đỉnh chóp thế này!",
@@ -859,13 +901,8 @@
             "Đoán mò trượt rồi cục cưng êi, thử lại nàoooo!"
         ];
 
-        function getRandomPraise() {
-            return praiseMessages[Math.floor(Math.random() * praiseMessages.length)];
-        }
-
-        function getRandomWrong() {
-            return cuteWrongMessages[Math.floor(Math.random() * cuteWrongMessages.length)];
-        }
+        function getRandomPraise() { return praiseMessages[Math.floor(Math.random() * praiseMessages.length)]; }
+        function getRandomWrong() { return cuteWrongMessages[Math.floor(Math.random() * cuteWrongMessages.length)]; }
 
         function setPracticeLevel(level) {
             currentPracticeLevel = level;
@@ -875,12 +912,10 @@
             document.getElementById(`p-${level}`).classList.add('active', 'text-bgDark');
             document.getElementById(`p-${level}`).classList.remove('text-textMuted');
 
-            currentQuizIndex = 0;
-            if(document.getElementById('quiz-box').classList.contains('hidden')) {
-                loadTranslateData();
-            } else {
-                loadNextQuiz();
-            }
+            // Cập nhật lại màn hình luyện tập đang mở
+            if(!document.getElementById('quiz-box').classList.contains('hidden')) loadNextQuiz();
+            else if(!document.getElementById('translate-box').classList.contains('hidden')) loadTranslateData();
+            else if(!document.getElementById('game-box').classList.contains('hidden')) initMatchingGame();
         }
 
         function getActiveWords() {
@@ -890,18 +925,45 @@
             return [...hskData.hsk1, ...hskData.hsk2, ...hskData.hsk3];
         }
 
-        function initQuiz() {
-             showPracticeTab('quiz');
-             loadNextQuiz();
+        function showPracticeTab(tabId) {
+            document.querySelectorAll('.practice-tab').forEach(t => {
+                t.classList.remove('active', 'border-klPink', 'text-klPink');
+                t.classList.add('border-transparent', 'text-textMuted');
+            });
+            document.getElementById(`tab-${tabId}`).classList.add('active', 'border-klPink', 'text-klPink');
+            document.getElementById(`tab-${tabId}`).classList.remove('border-transparent', 'text-textMuted');
+
+            document.getElementById('quiz-box').classList.add('hidden');
+            document.getElementById('translate-box').classList.add('hidden');
+            document.getElementById('fullsentence-box').classList.add('hidden');
+            document.getElementById('game-box').classList.add('hidden');
+
+            if(tabId === 'quiz') {
+                 document.getElementById('quiz-box').classList.remove('hidden');
+                 loadNextQuiz();
+            } else if(tabId === 'hv' || tabId === 'vh') {
+                 document.getElementById('translate-box').classList.remove('hidden');
+                 practiceTranslate(tabId);
+            } else if(tabId === 'fullsentence') {
+                 document.getElementById('fullsentence-box').classList.remove('hidden');
+                 loadNextFullSentence();
+            } else if(tabId === 'game') {
+                 document.getElementById('game-box').classList.remove('hidden');
+                 initMatchingGame();
+            }
         }
+
+        // --- TRẮC NGHIỆM ---
+        const quizBox = document.getElementById('quiz-box');
+        const quizQuestion = document.getElementById('quiz-question');
+        const quizOptions = document.getElementById('quiz-options');
+        const quizFeedback = document.getElementById('quiz-feedback');
+
+        function initQuiz() { showPracticeTab('quiz'); }
 
         function loadNextQuiz() {
              const words = getActiveWords();
-             if(words.length < 4) {
-                 quizQuestion.innerText = "Cấp độ này không đủ từ vựng để tạo câu hỏi!";
-                 quizOptions.innerHTML = '';
-                 return;
-             }
+             if(words.length < 4) return;
 
              const targetWord = words[Math.floor(Math.random() * words.length)];
              let wrongOptions = words.filter(w => w.vie !== targetWord.vie);
@@ -909,7 +971,6 @@
              
              let options = [targetWord.vie, wrongOptions[0].vie, wrongOptions[1].vie, wrongOptions[2].vie];
              options.sort(() => Math.random() - 0.5);
-             
              const correctIndex = options.indexOf(targetWord.vie);
 
              quizQuestion.innerHTML = `Từ <span class="text-klPink font-serif text-3xl">${targetWord.hanzi}</span> (${targetWord.pinyin}) có nghĩa là gì?`;
@@ -929,7 +990,7 @@
         function checkAnswer(selectedIndex, correctIndex) {
             if(selectedIndex === correctIndex) {
                 quizFeedback.innerHTML = `<i class="fas fa-heart text-klPink mr-2"></i> ${getRandomPraise()}`;
-                quizFeedback.classList.remove('text-red-400');
+                quizFeedback.classList.remove('text-yellow-400');
                 quizFeedback.classList.add('text-klPink');
                 setTimeout(loadNextQuiz, 1500);
             } else {
@@ -939,73 +1000,128 @@
             }
         }
 
+        // --- DỊCH TỪ ĐƠN ---
         let currentTransMode = 'hv';
         let currentTransData = null;
 
-        function showPracticeTab(tabId) {
-            document.querySelectorAll('.practice-tab').forEach(t => {
-                t.classList.remove('active', 'border-klPink', 'text-klPink');
-                t.classList.add('border-transparent', 'text-textMuted');
-            });
-            document.getElementById(`tab-${tabId}`).classList.add('active', 'border-klPink', 'text-klPink');
-            document.getElementById(`tab-${tabId}`).classList.remove('border-transparent', 'text-textMuted');
-
-            if(tabId === 'quiz') {
-                 quizBox.classList.remove('hidden');
-                 document.getElementById('translate-box').classList.add('hidden');
-                 loadNextQuiz();
-            } else {
-                 quizBox.classList.add('hidden');
-                 document.getElementById('translate-box').classList.remove('hidden');
-                 loadTranslateData();
-            }
-        }
-
-        function loadTranslateData() {
-             const words = getActiveWords();
-             if(words.length === 0) return;
-             currentTransData = words[Math.floor(Math.random() * words.length)];
-
-             const sourceP = document.getElementById('trans-source');
-             document.getElementById('trans-input').value = '';
-             document.getElementById('trans-result').innerText = '';
-
-             if(currentTransMode === 'hv') {
-                 sourceP.innerText = currentTransData.hanzi;
-                 sourceP.classList.add('font-serif');
-             } else {
-                 sourceP.innerText = currentTransData.vie;
-                 sourceP.classList.remove('font-serif');
-             }
-        }
-
         function practiceTranslate(mode) {
             currentTransMode = mode;
-            showPracticeTab(mode === 'hv' ? 'hv' : 'vh');
+            const words = getActiveWords();
+            if(words.length === 0) return;
+            currentTransData = words[Math.floor(Math.random() * words.length)];
+
+            const sourceP = document.getElementById('trans-source');
+            document.getElementById('trans-input').value = '';
+            document.getElementById('trans-result').innerText = '';
+
+            if(currentTransMode === 'hv') {
+                 sourceP.innerText = currentTransData.hanzi;
+                 sourceP.classList.add('font-serif');
+            } else {
+                 sourceP.innerText = currentTransData.vie;
+                 sourceP.classList.remove('font-serif');
+            }
         }
 
         function checkTranslation() {
             const userInputValue = document.getElementById('trans-input').value.trim().toLowerCase();
             const resultBox = document.getElementById('trans-result');
-            
             if(!currentTransData) return;
 
             let isCorrect = false;
             if(currentTransMode === 'hv') {
-                if(currentTransData.vie.toLowerCase().includes(userInputValue) || currentTransData.pinyin.toLowerCase() === userInputValue) {
-                    isCorrect = true;
-                }
+                if(currentTransData.vie.toLowerCase().includes(userInputValue) || currentTransData.pinyin.toLowerCase() === userInputValue) isCorrect = true;
             } else {
-                if(currentTransData.hanzi === userInputValue) {
-                    isCorrect = true;
-                }
+                if(currentTransData.hanzi === userInputValue) isCorrect = true;
             }
 
             if(isCorrect) {
                 resultBox.innerHTML = `<span class="text-klPink font-bold"><i class="fas fa-heart mr-2"></i>${getRandomPraise()} (Đáp án: ${currentTransMode === 'hv' ? currentTransData.vie : currentTransData.hanzi})</span>`;
-                setTimeout(loadTranslateData, 2000);
+                setTimeout(() => practiceTranslate(currentTransMode), 2000);
             } else {
                 resultBox.innerHTML = `<span class="text-yellow-400 font-medium"><i class="fas fa-face-sad-tear mr-2"></i>${getRandomWrong()}</span>`;
+            }
+        }
+
+        // --- DỊCH CÂU HOÀN CHỈNH ---
+        let currentFsIndex = 0;
+        function loadNextFullSentence() {
+            currentFsIndex = Math.floor(Math.random() * fullSentencesData.length);
+            const item = fullSentencesData[currentFsIndex];
+            document.getElementById('fs-question').innerText = item.zh;
+            document.getElementById('fs-hint').innerText = `Gợi ý Pinyin: ${item.pinyin}`;
+            document.getElementById('fs-input').value = '';
+            document.getElementById('fs-result').innerText = '';
+        }
+
+        function checkFullSentence() {
+            const userVal = document.getElementById('fs-input').value.trim().toLowerCase();
+            const item = fullSentencesData[currentFsIndex];
+            const resultDiv = document.getElementById('fs-result');
+
+            if(userVal === item.vi.toLowerCase() || userVal === item.pinyin.toLowerCase() || item.vi.toLowerCase().includes(userVal)) {
+                resultDiv.innerHTML = `<span class="text-klPink font-bold"><i class="fas fa-heart mr-2"></i>${getRandomPraise()} (Nghĩa chuẩn: ${item.vi})</span>`;
+            } else {
+                resultDiv.innerHTML = `<span class="text-yellow-400">Chưa chính xác rùi! Đáp án: "${item.vi}"</span>`;
+            }
+        }
+
+        // --- GAME LẬT THẺ NHANH ---
+        let selectedCards = [];
+        let matchedPairs = 0;
+
+        function initMatchingGame() {
+            const words = getActiveWords();
+            let gameWords = [...words].sort(() => 0.5 - Math.random()).slice(0, 4); // Lấy 4 cặp từ
+            let cards = [];
+
+            gameWords.forEach((w, idx) => {
+                cards.push({ id: idx, type: 'hanzi', text: w.hanzi, pairId: idx });
+                cards.push({ id: idx + 10, type: 'vie', text: w.vie, pairId: idx });
+            });
+            cards.sort(() => 0.5 - Math.random());
+
+            const grid = document.getElementById('matching-grid');
+            grid.innerHTML = '';
+            matchedPairs = 0;
+            selectedCards = [];
+            document.getElementById('game-status').innerText = "";
+
+            cards.forEach(card => {
+                const cardEl = document.createElement('div');
+                cardEl.className = "bg-bgDark border border-slate-700 h-20 flex items-center justify-center rounded-xl cursor-pointer text-lg font-medium text-white hover:border-klPink transition select-none shadow-md";
+                cardEl.innerText = card.text;
+                cardEl.onclick = () => selectCard(cardEl, card);
+                grid.appendChild(cardEl);
+            });
+        }
+
+        function selectCard(element, cardData) {
+            if(element.classList.contains('bg-klPink') || element.classList.contains('opacity-40')) return;
+            element.classList.add('bg-klPink/20', 'border-klPink');
+            selectedCards.push({ element, cardData });
+
+            if(selectedCards.length === 2) {
+                let [c1, c2] = selectedCards;
+                if(c1.cardData.pairId === c2.cardData.pairId && c1.cardData.type !== c2.cardData.type) {
+                    // Đúng cặp
+                    setTimeout(() => {
+                        c1.element.classList.add('opacity-40', 'pointer-events-none', 'bg-green-900/40');
+                        c2.element.classList.add('opacity-40', 'pointer-events-none', 'bg-green-900/40');
+                        matchedPairs++;
+                        if(matchedPairs === 4) {
+                            document.getElementById('game-status').innerHTML = `<i class="fas fa-heart text-klPink mr-1"></i> ${getRandomPraise()}`;
+                        }
+                        selectedCards = [];
+                    }, 300);
+                } else {
+                    // Sai cặp
+                    setTimeout(() => {
+                        c1.element.classList.remove('bg-klPink/20', 'border-klPink');
+                        c2.element.classList.remove('bg-klPink/20', 'border-klPink');
+                        selectedCards = [];
+                    }, 500);
+                }
             }
         }
     </script>
