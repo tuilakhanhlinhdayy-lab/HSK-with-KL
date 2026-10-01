@@ -34,8 +34,9 @@
         .my-rotate-y-180 { transform: rotateY(180deg); }
         .backface-hidden { backface-visibility: hidden; }
         .flip-card-inner { position: relative; width: 100%; height: 180px; }
-        .tab-btn.active { border-color: #f472b6; color: #f472b6; font-weight: 600; }
+        .tab-btn.active { border-color: #f472b6; color: #f472b6; font-weight: 600; background-color: #f472b6; color: #0f172a; }
         .practice-tab.active { border-color: #f472b6; color: #f472b6; }
+        .level-pill.active { background-color: #38bdf8; color: #0f172a; font-weight: bold; }
     </style>
 </head>
 
@@ -83,7 +84,7 @@
                 Học HSK <span class="text-klBlue">1</span>-<span class="text-klPink">3</span> <br>Cùng <span id="main-username">KL</span>
             </h1>
             <p class="text-xl text-textMuted max-w-xl mx-auto font-light leading-relaxed mb-10">
-                Hệ thống ôn tập toàn diện HSK 1-3. Flashcard phát âm, ngữ pháp chi tiết và bài tập trắc nghiệm.
+                Hệ thống ôn tập theo từng cấp độ HSK chuyên sâu. Flashcard, ngữ pháp và trắc nghiệm phân loại riêng biệt.
             </p>
              <div class="flex gap-4 justify-center">
                 <button onclick="scrollToSection('vocab')" class="bg-klBlue text-bgDark font-bold px-8 py-3 rounded-full shadow-lg hover:bg-sky-400 transition transform hover:-translate-y-1">Vào Học Từ Vựng</button>
@@ -91,11 +92,11 @@
             </div>
         </section>
 
-        <!-- PHẦN TỪ VỰNG -->
+        <!-- PHẦN TỪ VỰNG (CHIA THEO CẤP ĐỘ) -->
         <section id="vocab" class="mb-20 scroll-mt-24">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-10 pb-6 border-b border-slate-800 gap-4">
                 <h2 class="text-4xl font-extrabold text-white tracking-tight flex items-center gap-3">
-                    <i class="fas fa-book text-klPink"></i> Flashcard Từ Vựng
+                    <i class="fas fa-book text-klPink"></i> Flashcard Theo Cấp Độ
                 </h2>
                  <div class="flex gap-2 bg-slate-900 p-1 rounded-full border border-slate-700 w-full md:w-auto justify-center">
                     <button onclick="loadVocab('hsk1')" class="tab-btn active px-5 py-2 rounded-full text-sm w-1/3 md:w-auto" id="btn-hsk1">HSK 1</button>
@@ -106,24 +107,43 @@
             <div id="vocab-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"></div>
         </section>
 
-        <!-- PHẦN NGỮ PHÁP -->
+        <!-- PHẦN NGỮ PHÁP (CHIA THEO CẤP ĐỘ) -->
         <section id="grammar" class="mb-20 scroll-mt-24">
-            <h2 class="text-4xl font-extrabold text-white tracking-tight flex items-center gap-3 mb-10 pb-6 border-b border-slate-800">
-                <i class="fas fa-spell-check text-klBlue"></i> Tổng Hợp Ngữ Pháp
-            </h2>
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-10 pb-6 border-b border-slate-800 gap-4">
+                <h2 class="text-4xl font-extrabold text-white tracking-tight flex items-center gap-3">
+                    <i class="fas fa-spell-check text-klBlue"></i> Ngữ Pháp Theo Cấp Độ
+                </h2>
+                <div class="flex gap-2 bg-slate-900 p-1 rounded-full border border-slate-700 justify-center">
+                    <button onclick="filterGrammar('all')" class="level-pill active px-4 py-1.5 rounded-full text-xs" id="g-all">Tất cả</button>
+                    <button onclick="filterGrammar('HSK 1')" class="level-pill px-4 py-1.5 rounded-full text-xs text-textMuted hover:text-white" id="g-hsk1">HSK 1</button>
+                    <button onclick="filterGrammar('HSK 2')" class="level-pill px-4 py-1.5 rounded-full text-xs text-textMuted hover:text-white" id="g-hsk2">HSK 2</button>
+                    <button onclick="filterGrammar('HSK 3')" class="level-pill px-4 py-1.5 rounded-full text-xs text-textMuted hover:text-white" id="g-hsk3">HSK 3</button>
+                </div>
+            </div>
             <div id="grammar-list" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
         </section>
 
-        <!-- PHẦN LUYỆN TẬP -->
+        <!-- PHẦN LUYỆN TẬP (CHỌN CẤP ĐỘ LUYỆN TẬP) -->
         <section id="practice" class="mb-20 scroll-mt-24 bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-700">
-            <h2 class="text-4xl font-extrabold text-white tracking-tight flex items-center gap-3 mb-10">
-                <i class="fas fa-brain text-klPink"></i> Khu Vực Luyện Tập
+            <h2 class="text-4xl font-extrabold text-white tracking-tight flex items-center gap-3 mb-6">
+                <i class="fas fa-brain text-klPink"></i> Khu Vực Luyện Tập Theo Cấp Độ
             </h2>
+
+            <!-- Chọn cấp độ luyện tập -->
+            <div class="flex items-center gap-3 mb-8 bg-bgDark p-3 rounded-2xl border border-slate-700 w-fit flex-wrap">
+                <span class="text-xs text-textMuted uppercase font-bold tracking-wider ml-2">Chọn cấp độ luyện:</span>
+                <button onclick="setPracticeLevel('all')" class="level-pill active px-4 py-1.5 rounded-full text-xs" id="p-all">Tất cả (1-3)</button>
+                <button onclick="setPracticeLevel('hsk1')" class="level-pill px-4 py-1.5 rounded-full text-xs text-textMuted hover:text-white" id="p-hsk1">HSK 1</button>
+                <button onclick="setPracticeLevel('hsk2')" class="level-pill px-4 py-1.5 rounded-full text-xs text-textMuted hover:text-white" id="p-hsk2">HSK 2</button>
+                <button onclick="setPracticeLevel('hsk3')" class="level-pill px-4 py-1.5 rounded-full text-xs text-textMuted hover:text-white" id="p-hsk3">HSK 3</button>
+            </div>
+
             <div class="flex border-b border-slate-700 mb-10 gap-2 flex-wrap">
                 <button onclick="showPracticeTab('quiz')" class="practice-tab active px-6 py-3 border-b-2 font-semibold text-klPink border-klPink" id="tab-quiz"><i class="fas fa-tasks mr-2"></i>Trắc Nghiệm Từ Vựng</button>
                 <button onclick="practiceTranslate('hv')" class="practice-tab px-6 py-3 border-b-2 border-transparent text-textMuted hover:text-white" id="tab-hv"><i class="fas fa-exchange-alt mr-2"></i>Dịch Hán->Việt</button>
                 <button onclick="practiceTranslate('vh')" class="practice-tab px-6 py-3 border-b-2 border-transparent text-textMuted hover:text-white" id="tab-vh"><i class="fas fa-pen-alt mr-2"></i>Dịch Việt->Hán</button>
             </div>
+            
             <div id="practice-content">
                  <div id="quiz-box" class="bg-slate-800 p-8 rounded-2xl border border-slate-700">
                     <p id="quiz-question" class="text-2xl text-white font-medium mb-8">Câu hỏi?</p>
@@ -158,7 +178,6 @@
     </div>
 
     <script>
-        // --- 1. DỮ LIỆU TỪ VỰNG HSK 1-3 ---
         const hskData = {
             hsk1: [
                 { hanzi: "爱", pinyin: "ài", vie: "yêu", type: "động từ" },
@@ -436,8 +455,6 @@
                 { hanzi: "半", pinyin: "bàn", vie: "nửa", type: "số từ" },
                 { hanzi: "办法", pinyin: "bànfǎ", vie: "biện pháp", type: "danh từ" },
                 { hanzi: "办公室", pinyin: "bàngōngshì", vie: "văn phòng", type: "danh từ" },
-                { hanzi: "半", pinyin: "bàn", vie: "nửa", type: "số từ" },
-                { hanzi: "帮忙", pinyin: "bāngmáng", vie: "giúp đỡ", type: "động từ" },
                 { hanzi: "包", pinyin: "bāo", vie: "túi, gói", type: "danh từ" },
                 { hanzi: "饱", pinyin: "bǎo", vie: "no", type: "tính từ" },
                 { hanzi: "北方", pinyin: "běifāng", vie: "phương Bắc", type: "danh từ" },
@@ -521,7 +538,6 @@
                 { hanzi: "坏", pinyin: "huài", vie: "hỏng, xấu", type: "tính từ" },
                 { hanzi: "环境", pinyin: "huánjìng", vie: "môi trường", type: "danh từ" },
                 { hanzi: "换", pinyin: "huàn", vie: "đổi", type: "động từ" },
-                { hanzi: "黄河", pinyin: "Huáng Hé", vie: "sông Hoàng Hà", type: "danh từ riêng" },
                 { hanzi: "会议", pinyin: "huìyì", vie: "hội nghị", type: "danh từ" },
                 { hanzi: "或者", pinyin: "huòzhě", vie: "hoặc là", type: "liên từ" },
                 { hanzi: "几乎", pinyin: "jīhū", vie: "hầu như", type: "phó từ" },
@@ -539,19 +555,16 @@
                 { hanzi: "结束", pinyin: "jiéshù", vie: "kết thúc", type: "động từ" },
                 { hanzi: "解决", pinyin: "jiějué", vie: "giải quyết", type: "động từ" },
                 { hanzi: "句子", pinyin: "jùzi", vie: "câu", type: "danh từ" },
-                { hanzi: "觉得", pinyin: "juéde", vie: "cảm thấy", type: "động từ" },
                 { hanzi: "决定", pinyin: "juédìng", vie: "quyết định", type: "động/danh từ" },
                 { hanzi: "渴", pinyin: "kě", vie: "khát", type: "tính từ" },
                 { hanzi: "可爱", pinyin: "kě'ài", vie: "đáng yêu", type: "tính từ" },
                 { hanzi: "刻", pinyin: "kè", vie: "khắc (15 phút)", type: "lượng từ" },
-                { hanzi: "客k", pinyin: "kè", vie: "khách", type: "danh từ" },
                 { hanzi: "空气", pinyin: "kōngqì", vie: "không khí", type: "danh từ" },
                 { hanzi: "快", pinyin: "kuài", vie: "sắp", type: "phó từ" },
                 { hanzi: "筷子", pinyin: "kuàizi", vie: "đũa", type: "danh từ" },
                 { hanzi: "困", pinyin: "kùn", vie: "buồn ngủ", type: "tính từ" },
                 { hanzi: "困难", pinyin: "kùnnán", vie: "khó khăn", type: "tính/danh từ" },
                 { hanzi: "拉", pinyin: "lā", vie: "kéo", type: "động từ" },
-                { hanzi: "来", pinyin: "lái", vie: "đến (phó từ chỉ khoảng)", type: "phó từ" },
                 { hanzi: "蓝", pinyin: "lán", vie: "màu xanh lam", type: "tính từ" },
                 { hanzi: "老", pinyin: "lǎo", vie: "già", type: "tính từ" },
                 { hanzi: "离开", pinyin: "líkāi", vie: "rời khỏi", type: "động từ" },
@@ -696,7 +709,6 @@
             ]
         };
 
-        // --- 2. DỮ LIỆU NGỮ PHÁP HSK 1-3 ---
         const grammarData = [
             { level: "HSK 1", title: "Cấu trúc câu cơ bản: S + V + O", explain: "Chủ ngữ đứng trước, tiếp theo là động từ và tân ngữ chỉ đối tượng nhận hành động.", examples: [{ zh: "我吃饭。", vi: "Tôi ăn cơm." }, { zh: "他喝水。", vi: "Anh ấy uống nước." }] },
             { level: "HSK 1", title: "Câu hỏi với trợ từ 吗 (ma)", explain: "Dùng từ '吗' đặt ở cuối câu trần thuật để biến câu đó thành câu hỏi Yes/No.", examples: [{ zh: "你是中国人吗？", vi: "Bạn có phải người Trung Quốc không?" }] },
@@ -706,7 +718,6 @@
             { level: "HSK 3", title: "Liên từ 虽然... 但是... (suī rán... dàn shì)", explain: "Biểu thị quan hệ nhượng bộ: Mặc dù... nhưng...", examples: [{ zh: "虽然很累，但是很高兴。", vi: "Mặc dù rất mệt, nhưng rất vui." }] }
         ];
 
-        // --- 3. LOGIC HỆ THỐNG (UI & SCRIPT) ---
         const savedUser = localStorage.getItem('hskUsername') || 'KL';
         document.getElementById('main-username').innerText = savedUser;
         document.getElementById('user-name-display').innerText = savedUser;
@@ -738,13 +749,14 @@
 
         window.onload = function() {
             loadVocab('hsk1');
-            loadGrammar();
+            filterGrammar('all');
             initQuiz();
         };
 
+        // --- TỪ VỰNG THEO CẤP ĐỘ ---
         function loadVocab(level) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active', 'bg-klBlue', 'text-bgDark'));
-            document.getElementById(`btn-${level}`).classList.add('active', 'bg-klBlue', 'text-bgDark');
+            document.querySelectorAll('#vocab .tab-btn').forEach(b => b.classList.remove('active', 'bg-klPink', 'text-bgDark'));
+            document.getElementById(`btn-${level}`).classList.add('active');
 
             const grid = document.getElementById('vocab-grid');
             grid.innerHTML = ''; 
@@ -791,10 +803,26 @@
             }
         }
 
-        function loadGrammar() {
+        // --- NGỮ PHÁP THEO CẤP ĐỘ ---
+        function filterGrammar(level) {
+            document.querySelectorAll('#grammar .level-pill').forEach(p => p.classList.remove('active', 'text-bgDark'));
+            document.querySelectorAll('#grammar .level-pill').forEach(p => p.classList.add('text-textMuted'));
+            
+            let btnId = 'g-all';
+            if(level === 'HSK 1') btnId = 'g-hsk1';
+            if(level === 'HSK 2') btnId = 'g-hsk2';
+            if(level === 'HSK 3') btnId = 'g-hsk3';
+            
+            const activeBtn = document.getElementById(btnId);
+            activeBtn.classList.add('active', 'text-bgDark');
+            activeBtn.classList.remove('text-textMuted');
+
             const container = document.getElementById('grammar-list');
             container.innerHTML = '';
-            grammarData.forEach(item => {
+            
+            const filtered = level === 'all' ? grammarData : grammarData.filter(item => item.level === level);
+
+            filtered.forEach(item => {
                 const exHtml = item.examples.map(ex => `<div class="mt-3 pt-3 border-t border-slate-700"><p class="text-lg text-klBlue font-serif">${ex.zh}</p><p class="text-sm text-textMuted">${ex.vi}</p></div>`).join('');
                 const cardHtml = `
                     <div class="bg-cardDark p-8 rounded-3xl border border-slate-700 shadow-lg">
@@ -811,18 +839,36 @@
             });
         }
 
+        // --- LUYỆN TẬP & TRẮC NGHIỆM THEO CẤP ĐỘ ---
+        let currentPracticeLevel = 'all';
         let currentQuizIndex = 0;
         const quizBox = document.getElementById('quiz-box');
         const quizQuestion = document.getElementById('quiz-question');
         const quizOptions = document.getElementById('quiz-options');
         const quizFeedback = document.getElementById('quiz-feedback');
 
-        const quizData = [
-            { q: "请问，'你'是什么意思？", a: ["Tôi", "Bạn", "Khỏe", "Ăn"], correct: 1 },
-            { q: "Chọn Pinyin đúng cho từ '学习':", a: ["gōng zuò", "xué xí", "yī shēng", "wǒ"], correct: 1 },
-            { q: "Điền vào chỗ trống: 我___医生。(Tôi là bác sĩ)", a: ["是", "吃", "喝", "叫"], correct: 0 },
-            { q: "Từ '爱' có nghĩa là gì?", a: ["Ghét", "Yêu", "Đi", "Mua"], correct: 1 }
-        ];
+        function setPracticeLevel(level) {
+            currentPracticeLevel = level;
+            document.querySelectorAll('#practice .level-pill').forEach(p => p.classList.remove('active', 'text-bgDark'));
+            document.querySelectorAll('#practice .level-pill').forEach(p => p.classList.add('text-textMuted'));
+            
+            document.getElementById(`p-${level}`).classList.add('active', 'text-bgDark');
+            document.getElementById(`p-${level}`).classList.remove('text-textMuted');
+
+            currentQuizIndex = 0;
+            if(document.getElementById('quiz-box').classList.contains('hidden')) {
+                loadTranslateData();
+            } else {
+                loadNextQuiz();
+            }
+        }
+
+        function getActiveWords() {
+            if(currentPracticeLevel === 'hsk1') return hskData.hsk1;
+            if(currentPracticeLevel === 'hsk2') return hskData.hsk2;
+            if(currentPracticeLevel === 'hsk3') return hskData.hsk3;
+            return [...hskData.hsk1, ...hskData.hsk2, ...hskData.hsk3];
+        }
 
         function initQuiz() {
              showPracticeTab('quiz');
@@ -830,15 +876,32 @@
         }
 
         function loadNextQuiz() {
-             if(currentQuizIndex >= quizData.length) currentQuizIndex = 0;
-             const q = quizData[currentQuizIndex];
-             quizQuestion.innerText = q.q;
+             const words = getActiveWords();
+             if(words.length < 4) {
+                 quizQuestion.innerText = "Cấp độ này chưa đủ từ vựng để tạo câu hỏi trắc nghiệm!";
+                 quizOptions.innerHTML = '';
+                 return;
+             }
+
+             // Random 1 từ làm câu hỏi
+             const targetWord = words[Math.floor(Math.random() * words.length)];
+             
+             // Lấy 3 đáp án sai khác
+             let wrongOptions = words.filter(w => w.vie !== targetWord.vie);
+             wrongOptions.sort(() => Math.random() - 0.5);
+             
+             let options = [targetWord.vie, wrongOptions[0].vie, wrongOptions[1].vie, wrongOptions[2].vie];
+             options.sort(() => Math.random() - 0.5); // Xáo trộn đáp án
+             
+             const correctIndex = options.indexOf(targetWord.vie);
+
+             quizQuestion.innerHTML = `Từ <span class="text-klPink font-serif text-3xl">${targetWord.hanzi}</span> (${targetWord.pinyin}) có nghĩa là gì?`;
              quizOptions.innerHTML = '';
              quizFeedback.innerText = '';
 
-             q.a.forEach((option, index) => {
+             options.forEach((option, index) => {
                  const btn = `
-                    <button onclick="checkAnswer(${index}, ${q.correct})" class="text-left p-5 rounded-xl bg-bgDark border border-slate-700 hover:border-klBlue hover:bg-slate-900 transition text-white text-lg font-medium">
+                    <button onclick="checkAnswer(${index}, ${correctIndex})" class="text-left p-5 rounded-xl bg-bgDark border border-slate-700 hover:border-klBlue hover:bg-slate-900 transition text-white text-lg font-medium">
                         ${String.fromCharCode(65+index)}. ${option}
                     </button>
                  `;
@@ -851,7 +914,6 @@
                 quizFeedback.innerHTML = '<i class="fas fa-check-circle text-green-400 mr-2"></i> Chính xác!';
                 quizFeedback.classList.remove('text-red-400');
                 quizFeedback.classList.add('text-green-400');
-                currentQuizIndex++;
                 setTimeout(loadNextQuiz, 1000);
             } else {
                  quizFeedback.innerHTML = '<i class="fas fa-times-circle text-red-400 mr-2"></i> Sai rồi, thử lại nhé.';
@@ -874,6 +936,7 @@
             if(tabId === 'quiz') {
                  quizBox.classList.remove('hidden');
                  document.getElementById('translate-box').classList.add('hidden');
+                 loadNextQuiz();
             } else {
                  quizBox.classList.add('hidden');
                  document.getElementById('translate-box').classList.remove('hidden');
@@ -882,8 +945,8 @@
         }
 
         function loadTranslateData() {
-             const allWords = [...hskData.hsk1, ...hskData.hsk2, ...hskData.hsk3];
-             currentTransData = allWords[Math.floor(Math.random() * allWords.length)];
+             const words = getActiveWords();
+             currentTransData = words[Math.floor(Math.random() * words.length)];
 
              const sourceP = document.getElementById('trans-source');
              document.getElementById('trans-input').value = '';
@@ -911,12 +974,10 @@
 
             let isCorrect = false;
             if(currentTransMode === 'hv') {
-                // Kiểm tra nghĩa tiếng Việt hoặc pinyin
                 if(currentTransData.vie.toLowerCase().includes(userInputValue) || currentTransData.pinyin.toLowerCase() === userInputValue) {
                     isCorrect = true;
                 }
             } else {
-                // Kiểm tra chữ Hán
                 if(currentTransData.hanzi === userInputValue) {
                     isCorrect = true;
                 }
