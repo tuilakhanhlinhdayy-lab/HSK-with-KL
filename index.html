@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>HSK With KL - Master HSK</title>
+    <title>HSK Vibe With KL - Master HSK 1-3</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Nhúng file dữ liệu ngoài -->
-    <script src="words.js"></script>
 
     <script>
         tailwind.config = {
@@ -18,64 +16,54 @@
                     colors: {
                         bgDark: '#0f172a',
                         cardDark: '#1e293b',
-                        // Bảng màu Xanh & Hồng Pastel theo yêu cầu
-                        klBlue: '#38bdf8', // Màu xanh dương nhạt
-                        klPink: '#f472b6', // Màu hồng pastel
+                        klBlue: '#38bdf8',
+                        klPink: '#f472b6',
                         textMuted: '#94a3b8'
                     },
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Noto Serif SC', 'serif'] },
                 }
             }
         }
     </script>
     <style>
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #0f172a; }
         ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
-        
-        /* Flashcard Flip */
         .perspective { perspective: 1500px; }
         .preserve-3d { transform-style: preserve-3d; transition: transform 0.6s; }
         .my-rotate-y-180 { transform: rotateY(180deg); }
         .backface-hidden { backface-visibility: hidden; }
         .flip-card-inner { position: relative; width: 100%; height: 180px; }
-        
-        /* Tab Active State */
         .tab-btn.active { border-color: #f472b6; color: #f472b6; font-weight: 600; }
+        .practice-tab.active { border-color: #f472b6; color: #f472b6; }
     </style>
 </head>
 
 <body class="bg-bgDark text-gray-200 font-sans h-full flex flex-col antialiased">
 
-    <!-- THANH ĐIỀU HƯỚNG CHÍNH (DUAL TONE) -->
+    <!-- THANH ĐIỀU HƯỚNG CHÍNH -->
     <header class="sticky top-0 z-50 bg-bgDark/95 backdrop-blur-sm border-b border-slate-800">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center gap-2 text-klBlue">
                 <i class="fas fa-cloud-moon text-2xl"></i>
                 <span class="font-bold text-lg tracking-tight">HSK <span class="text-klPink">VIBE</span></span>
             </div>
-            
-            <!-- Menu cho Desktop -->
             <div class="hidden md:flex items-center gap-1 bg-slate-900 p-1 rounded-full border border-slate-700 text-sm">
                 <a href="#home" class="px-4 py-2 rounded-full text-white/90 hover:bg-slate-800"><i class="fas fa-home mr-2 text-klBlue"></i>Trang Chủ</a>
                 <a href="#vocab" class="px-4 py-2 rounded-full text-white/90 hover:bg-slate-800"><i class="fas fa-book mr-2 text-klPink"></i>Từ Vựng</a>
                 <a href="#grammar" class="px-4 py-2 rounded-full text-white/90 hover:bg-slate-800"><i class="fas fa-spell-check mr-2 text-klBlue"></i>Ngữ Pháp</a>
                 <a href="#practice" class="px-4 py-2 rounded-full text-white/90 hover:bg-slate-800"><i class="fas fa-brain mr-2 text-klPink"></i>Luyện Tập</a>
             </div>
-
             <div class="flex items-center gap-3">
                 <span class="text-xs text-textMuted border border-slate-700 bg-slate-800 px-3 py-1 rounded-full">
                     <i class="fas fa-user mr-1.5 text-klPink"></i> <span id="user-name-display">KL's Hub</span>
                 </span>
                  <button onclick="openSettings()" class="text-textMuted hover:text-klPink"><i class="fas fa-cog"></i></button>
-                 <!-- Nút menu mobile (ẩn trên desktop) -->
                 <button id="mobile-menu-toggle" class="md:hidden text-white"><i class="fas fa-bars"></i></button>
             </div>
         </nav>
     </header>
     
-    <!-- MENU MOBILE NỔI (Tự động ẩn trên desktop) -->
     <div id="mobile-menu" class="md:hidden fixed inset-x-0 top-[73px] z-40 bg-slate-900 border-b border-slate-700 p-4 transform -translate-y-full transition-transform duration-300 ease-in-out">
         <div class="flex flex-col gap-2">
             <a href="#home" class="px-4 py-3 rounded-lg text-white hover:bg-slate-800"><i class="fas fa-home mr-2 text-klBlue"></i>Trang Chủ</a>
@@ -85,10 +73,7 @@
         </div>
     </div>
 
-    <!-- NỘI DUNG CHÍNH -->
     <main class="flex-grow container mx-auto px-4 py-8 pb-20">
-        
-        <!-- PHẦN 1: TRANG CHỦ (HIỂN THỊ TÊN) -->
         <section id="home" class="text-center py-16 mb-16 bg-slate-900 rounded-3xl border border-slate-700 shadow-2xl">
              <div class="inline-flex items-center gap-3 bg-slate-800 border border-slate-700 px-5 py-2 rounded-full mb-8 shadow-inner">
                 <i class="fas fa-star text-klPink animate-pulse"></i>
@@ -98,7 +83,7 @@
                 Học HSK <span class="text-klBlue">1</span>-<span class="text-klPink">3</span> <br>Cùng <span id="main-username">KL</span>
             </h1>
             <p class="text-xl text-textMuted max-w-xl mx-auto font-light leading-relaxed mb-10">
-                Hệ thống ôn tập từ vựng, ngữ pháp và luyện tập toàn diện được thiết kế riêng cho bạn.
+                Hệ thống ôn tập toàn diện HSK 1-3. Flashcard phát âm, ngữ pháp chi tiết và bài tập trắc nghiệm.
             </p>
              <div class="flex gap-4 justify-center">
                 <button onclick="scrollToSection('vocab')" class="bg-klBlue text-bgDark font-bold px-8 py-3 rounded-full shadow-lg hover:bg-sky-400 transition transform hover:-translate-y-1">Vào Học Từ Vựng</button>
@@ -106,81 +91,60 @@
             </div>
         </section>
 
-        <!-- PHẦN 2: HỌC TỪ VỰNG (TÍCH HỢP HSK 1-3 MẪU) -->
+        <!-- PHẦN TỪ VỰNG (TÍCH HỢP FULL HSK 1-3) -->
         <section id="vocab" class="mb-20 scroll-mt-24">
-            <div class="flex items-center justify-between mb-10 pb-6 border-b border-slate-800">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-10 pb-6 border-b border-slate-800 gap-4">
                 <h2 class="text-4xl font-extrabold text-white tracking-tight flex items-center gap-3">
                     <i class="fas fa-book text-klPink"></i> Flashcard Từ Vựng
                 </h2>
-                 <div class="flex gap-2 bg-slate-900 p-1 rounded-full border border-slate-700">
-                    <button onclick="loadVocab('hsk1')" class="tab-btn active px-5 py-2 rounded-full text-sm" id="btn-hsk1">HSK 1</button>
-                    <button onclick="loadVocab('hsk2')" class="tab-btn px-5 py-2 rounded-full text-sm text-textMuted hover:text-white" id="btn-hsk2">HSK 2</button>
-                    <button onclick="loadVocab('hsk3')" class="tab-btn px-5 py-2 rounded-full text-sm text-textMuted hover:text-white" id="btn-hsk3">HSK 3</button>
+                 <div class="flex gap-2 bg-slate-900 p-1 rounded-full border border-slate-700 w-full md:w-auto justify-center">
+                    <button onclick="loadVocab('hsk1')" class="tab-btn active px-5 py-2 rounded-full text-sm w-1/3 md:w-auto" id="btn-hsk1">HSK 1</button>
+                    <button onclick="loadVocab('hsk2')" class="tab-btn px-5 py-2 rounded-full text-sm text-textMuted hover:text-white w-1/3 md:w-auto" id="btn-hsk2">HSK 2</button>
+                    <button onclick="loadVocab('hsk3')" class="tab-btn px-5 py-2 rounded-full text-sm text-textMuted hover:text-white w-1/3 md:w-auto" id="btn-hsk3">HSK 3</button>
                 </div>
             </div>
-
-            <!-- NƠI JS SẼ ĐỔ DỮ LIỆU VÀO -->
-            <div id="vocab-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                <!-- Dữ liệu mẫu sẽ được load tự động -->
-            </div>
+            <div id="vocab-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"></div>
         </section>
 
-        <!-- PHẦN 3: NGỮ PHÁP (TÍCH HỢP MẪU) -->
+        <!-- PHẦN NGỮ PHÁP (TÍCH HỢP FULL HSK 1-3) -->
         <section id="grammar" class="mb-20 scroll-mt-24">
             <h2 class="text-4xl font-extrabold text-white tracking-tight flex items-center gap-3 mb-10 pb-6 border-b border-slate-800">
                 <i class="fas fa-spell-check text-klBlue"></i> Tổng Hợp Ngữ Pháp
             </h2>
-            <div id="grammar-list" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Dữ liệu mẫu sẽ được load từ words.js -->
-            </div>
+            <div id="grammar-list" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
         </section>
 
-        <!-- PHẦN 4: LUYỆN TẬP VÀ ÔN TẬP (TRẮC NGHIỆM & DỊCH) -->
+        <!-- PHẦN LUYỆN TẬP (TRẮC NGHIỆM & DỊCH - LẤY DỮ LIỆU TỪ PHẦN TRÊN) -->
         <section id="practice" class="mb-20 scroll-mt-24 bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-700">
             <h2 class="text-4xl font-extrabold text-white tracking-tight flex items-center gap-3 mb-10">
                 <i class="fas fa-brain text-klPink"></i> Khu Vực Luyện Tập
             </h2>
-            
-            <!-- Tabs Luyện Tập -->
-            <div class="flex border-b border-slate-700 mb-10 gap-2">
-                <button onclick="showPracticeTab('quiz')" class="practice-tab active px-6 py-3 border-b-2 font-semibold text-klPink" id="tab-quiz"><i class="fas fa-tasks mr-2"></i>Trắc Nghiệm</button>
+            <div class="flex border-b border-slate-700 mb-10 gap-2 flex-wrap">
+                <button onclick="showPracticeTab('quiz')" class="practice-tab active px-6 py-3 border-b-2 font-semibold text-klPink border-klPink" id="tab-quiz"><i class="fas fa-tasks mr-2"></i>Trắc Nghiệm Từ Vựng</button>
                 <button onclick="practiceTranslate('hv')" class="practice-tab px-6 py-3 border-b-2 border-transparent text-textMuted hover:text-white" id="tab-hv"><i class="fas fa-exchange-alt mr-2"></i>Dịch Hán->Việt</button>
                 <button onclick="practiceTranslate('vh')" class="practice-tab px-6 py-3 border-b-2 border-transparent text-textMuted hover:text-white" id="tab-vh"><i class="fas fa-pen-alt mr-2"></i>Dịch Việt->Hán</button>
             </div>
-
-            <!-- Nội dung Trắc nghiệm -->
             <div id="practice-content">
                  <div id="quiz-box" class="bg-slate-800 p-8 rounded-2xl border border-slate-700">
-                    <p id="quiz-question" class="text-2xl text-white font-medium mb-8">Câu hỏi sẽ hiện ở đây?</p>
-                    <div id="quiz-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <!-- Options load here -->
-                    </div>
+                    <p id="quiz-question" class="text-2xl text-white font-medium mb-8">Câu hỏi?</p>
+                    <div id="quiz-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
                     <div id="quiz-feedback" class="mt-6 text-lg font-medium text-center h-7"></div>
                  </div>
-                 
-                <!-- Nội dung Dịch (ẩn mặc định) -->
                 <div id="translate-box" class="hidden bg-slate-800 p-8 rounded-2xl border border-slate-700 text-center">
                      <p id="trans-source" class="text-4xl font-serif text-white mb-6"></p>
-                     <input type="text" id="trans-input" placeholder="Nhập câu trả lời của bạn..." class="w-full max-w-md px-5 py-3 rounded-lg bg-bgDark border border-slate-700 text-white mb-4 focus:ring-2 focus:ring-klPink focus:border-klPink outline-none">
+                     <input type="text" id="trans-input" placeholder="Nhập câu trả lời..." class="w-full max-w-md px-5 py-3 rounded-lg bg-bgDark border border-slate-700 text-white mb-4 focus:ring-2 focus:ring-klPink focus:border-klPink outline-none">
                      <div id="trans-result" class="text-xl font-medium mb-6 h-7 text-klBlue"></div>
                      <button onclick="checkTranslation()" class="bg-klPink text-white px-6 py-2 rounded-lg font-medium">Kiểm tra</button>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <!-- CHÂN TRANG (CÓ NÚT CÀI ĐẶT TÊN) -->
     <footer class="w-full py-10 mt-auto border-t border-slate-800 bg-slate-900/50 text-center">
-        <div class="text-sm text-textMuted mb-2">
-             &copy; 2023 Master HSK Vibe. Build for <span id="footer-username">KL</span>.
-        </div>
-        <div class="text-xs text-slate-600">
-            Powered by Tailwind, Inter, Font Awesome & AI. <i class="fas fa-heart text-klPink"></i>
-        </div>
+        <div class="text-sm text-textMuted mb-2"> &copy; 2023 Master HSK Vibe. Build for <span id="footer-username">KL</span>. </div>
+        <div class="text-xs text-slate-600"> Powered by Tailwind, Inter, Font Awesome & AI. <i class="fas fa-heart text-klPink"></i> </div>
     </footer>
     
-    <!-- SETTINGS MODAL (Để đổi tên) -->
     <div id="settings-modal" class="fixed inset-0 z-50 bg-bgDark/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
         <div class="bg-slate-900 p-8 rounded-3xl border border-slate-700 w-full max-w-md shadow-2xl">
             <div class="flex justify-between items-center mb-6">
@@ -193,215 +157,131 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT XỬ LÝ HỆ THỐNG -->
+    <!-- ========================================================================== -->
+    <!-- ==================== DỮ LIỆU FULL HSK 1-3 TÍCH HỢP ======================== -->
+    <!-- ========================================================================== -->
     <script>
-        // --- 0. Quản lý Tên người dùng ---
-        const savedUser = localStorage.getItem('hskUsername') || 'KL';
-        document.getElementById('main-username').innerText = savedUser;
-        document.getElementById('user-name-display').innerText = savedUser;
-        document.getElementById('footer-username').innerText = savedUser;
-        document.getElementById('username-input').value = savedUser;
-
-        function openSettings() { document.getElementById('settings-modal').classList.remove('hidden'); }
-        function closeSettings() { document.getElementById('settings-modal').classList.add('hidden'); }
-        function saveUsername() {
-            const newName = document.getElementById('username-input').value;
-            localStorage.setItem('hskUsername', newName);
-            location.reload();
-        }
-
-        // --- 1. Xử lý Mobile Menu ---
-        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('-translate-y-full');
-        });
-        // Đóng menu khi click vào link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-           link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('-translate-y-full'));
-        });
-
-        // Cuộn mượt mà cho các link nội bộ
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-        function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
-
-        // --- 2. Xử lý TỪ VỰNG (Load từ words.js) ---
-        // Khởi tạo load HSK 1 mặc định
-        window.onload = function() {
-            loadVocab('hsk1');
-            loadGrammar();
-            initQuiz();
-        };
-
-        function loadVocab(level) {
-            // Cập nhật nút active
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active', 'bg-klBlue', 'text-bgDark'));
-            document.getElementById(`btn-${level}`).classList.add('active', 'bg-klBlue', 'text-bgDark');
-
-            const grid = document.getElementById('vocab-grid');
-            grid.innerHTML = ''; // Xóa nội dung cũ
-            
-            const words = hskData[level];
-            
-            words.forEach(word => {
-                const cardHtml = `
-                    <div class="flip-card-inner perspective cursor-pointer group" onclick="flipAndSpeak(this, '${word.hanzi}')">
-                        <div class="relative preserve-3d w-full h-full rounded-3xl border border-slate-700 shadow-xl bg-cardDark p-6 flex flex-col justify-between">
-                            <!-- Mặt trước (Tiếng Trung & Type) -->
-                            <div class="backface-hidden absolute inset-0 w-full h-full flex flex-col justify-center items-center p-4 text-center">
-                                <div class="text-xs font-semibold text-klPink uppercase tracking-widest mb-3">${level.toUpperCase()} | ${word.type}</div>
-                                <div class="text-6xl font-medium text-white font-serif tracking-tight leading-none">${word.hanzi}</div>
-                                <div class="text-xs text-textMuted mt-5 opacity-0 group-hover:opacity-100 transition-opacity">(Bấm để lật & nghe)</div>
-                            </div>
-                            <!-- Mặt sau (Pinyin & Nghĩa) -->
-                            <div class="backface-hidden my-rotate-y-180 absolute inset-0 w-full h-full flex flex-col justify-center items-center p-4 text-center bg-slate-800 rounded-3xl">
-                                <div class="text-2xl font-semibold text-klBlue mb-3 tracking-tight">${word.pinyin}</div>
-                                <div class="text-xl font-medium text-white mb-1">${word.vie}</div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                grid.insertAdjacentHTML('beforeend', cardHtml);
-            });
-        }
-
-        // Flashcard Flip & Speak
-        function flipAndSpeak(cardElement, text) {
-            // Lật thẻ
-            const cardInner = cardElement.querySelector('.preserve-3d');
-            cardInner.classList.toggle('my-rotate-y-180');
-            
-            // Phát âm thanh (chỉ khi lật sang mặt sau chứa tiếng Trung)
-            const isFlipped = cardInner.classList.contains('my-rotate-y-180');
-            if(isFlipped) {
-                setTimeout(() => { speakText(text); }, 300); // Delay xíu cho hiệu ứng lật
-            } else {
-                window.speechSynthesis.cancel(); // Tắt tiếng nếu lật ngược lại
-            }
-        }
-
-        function speakText(text) {
-             if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                let utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'zh-CN'; // Ngôn ngữ Trung Quốc
-                utterance.rate = 0.8; // Tốc độ nói
-                window.speechSynthesis.speak(utterance);
-            }
-        }
-
-        // --- 3. Xử lý NGỮ PHÁP (Load từ words.js) ---
-        function loadGrammar() {
-            const container = document.getElementById('grammar-list');
-            grammarData.forEach(item => {
-                const exHtml = item.examples.map(ex => `<div class="mt-3 pt-3 border-t border-slate-700"><p class="text-lg text-klBlue font-serif">${ex.zh}</p><p class="text-sm text-textMuted">${ex.vi}</p></div>`).join('');
-                
-                const cardHtml = `
-                    <div class="bg-cardDark p-8 rounded-3xl border border-slate-700 shadow-lg">
-                        <span class="text-xs font-bold bg-klPink/10 text-klPink px-3 py-1 rounded-full">${item.level}</span>
-                        <h4 class="text-2xl font-semibold text-white mt-4 mb-3">${item.title}</h4>
-                        <p class="text-textMuted mb-5">${item.explain}</p>
-                        <div class="bg-bgDark p-5 rounded-xl border border-slate-700">
-                            <p class="text-sm font-semibold text-white mb-2">Ví dụ:</p>
-                            ${exHtml}
-                        </div>
-                    </div>
-                `;
-                container.insertAdjacentHTML('beforeend', cardHtml);
-            });
-        }
-
-        // --- 4. Xử lý LUYỆN TẬP (TRẮC NGHIỆM) ---
-        let currentQuizIndex = 0;
-        const quizBox = document.getElementById('quiz-box');
-        const quizQuestion = document.getElementById('quiz-question');
-        const quizOptions = document.getElementById('quiz-options');
-        const quizFeedback = document.getElementById('quiz-feedback');
-
-        function initQuiz() {
-             // Hiển thị tab quiz mặc định
-             showPracticeTab('quiz');
-             loadNextQuiz();
-        }
-
-        function loadNextQuiz() {
-             if(currentQuizIndex >= quizData.length) currentQuizIndex = 0; // Reset nếu hết
-
-             const q = quizData[currentQuizIndex];
-             quizQuestion.innerText = q.q;
-             quizOptions.innerHTML = '';
-             quizFeedback.innerText = '';
-
-             q.a.forEach((option, index) => {
-                 const btn = `
-                    <button onclick="checkAnswer(${index}, ${q.correct})" class="text-left p-5 rounded-xl bg-bgDark border border-slate-700 hover:border-klBlue hover:bg-slate-900 transition text-white text-lg font-medium">
-                        ${String.fromCharCode(65+index)}. ${option}
-                    </button>
-                 `;
-                 quizOptions.insertAdjacentHTML('beforeend', btn);
-             });
-        }
-
-        function checkAnswer(selectedIndex, correctIndex) {
-            if(selectedIndex === correctIndex) {
-                quizFeedback.innerHTML = '<i class="fas fa-check-circle text-green-400 mr-2"></i> Chính xác!';
-                quizFeedback.classList.remove('text-red-400');
-                quizFeedback.classList.add('text-green-400');
-                currentQuizIndex++;
-                setTimeout(loadNextQuiz, 1000); // Load câu tiếp sau 1s
-            } else {
-                 quizFeedback.innerHTML = '<i class="fas fa-times-circle text-red-400 mr-2"></i> Sai rồi, thử lại nhé.';
-                 quizFeedback.classList.remove('text-green-400');
-                 quizFeedback.classList.add('text-red-400');
-            }
-        }
-
-        // --- 5. Xử lý LUYỆN TẬP (DỊCH THUẬT) ---
-        let currentTransMode = 'hv'; // hv: Hán -> Việt, vh: Việt -> Hán
-        let currentTransData = null;
-
-        function showPracticeTab(tabId) {
-            // Reset active tab style
-            document.querySelectorAll('.practice-tab').forEach(t => {
-                t.classList.remove('active', 'border-klPink', 'text-klPink');
-                t.classList.add('border-transparent', 'text-textMuted');
-            });
-            document.getElementById(`tab-${tabId}`).classList.add('active', 'border-klPink', 'text-klPink');
-            document.getElementById(`tab-${tabId}`).classList.remove('border-transparent', 'text-textMuted');
-
-            // Ẩn/Hiện nội dung
-            if(tabId === 'quiz') {
-                 quizBox.classList.remove('hidden');
-                 document.getElementById('translate-box').classList.add('hidden');
-            } else {
-                 quizBox.classList.add('hidden');
-                 document.getElementById('translate-box').classList.remove('hidden');
-                 // Load dữ liệu dịch lần đầu
-                 loadTranslateData();
-            }
-        }
-
-        function loadTranslateData() {
-             // Lấy một từ ngẫu nhiên từ HSK 1-3 (đã gộp chung cho tiện)
-             const allWords = [...hskData.hsk1, ...hskData.hsk2, ...hskData.hsk3];
-             currentTransData = allWords[Math.floor(Math.random() * allWords.length)];
-
-             const sourceP = document.getElementById('trans-source');
-             document.getElementById('trans-input').value = ''; // Reset input
-             document.getElementById('trans-result').innerText = '';
-
-             if(currentTransMode === 'hv') {
-                 sourceP.innerText = currentTransData.hanzi; // Hiện chữ Hán
-                 sourceP.classList.add('font-serif'); // Dùng font tiếng Trung
-             } else {
-                 sourceP.innerText = currentTransData.vie; // Hiện nghĩa Việt
-                 sourceP.classList.remove('font-serif');
-             }
-        }
-
-        function practiceTranslate(mode) {
-            currentTransMode = mode;
-            showPracticeTab(mode === 'hv' ? 'hv' : 'vh');
+        // --- 1. DỮ LIỆU TỪ VỰNG HSK 1-3 ---
+        const hskData = {
+            hsk1: [
+                { hanzi: "爱", pinyin: "ài", vie: "yêu", type: "động từ" },
+                { hanzi: "八", pinyin: "bā", vie: "tám", type: "số từ" },
+                { hanzi: "爸爸", pinyin: "bàba", vie: "bố", type: "danh từ" },
+                { hanzi: "杯子", pinyin: "bēizi", vie: "cốc", type: "danh từ" },
+                { hanzi: "北京", pinyin: "Běijīng", vie: "Bắc Kinh", type: "danh từ riêng" },
+                { hanzi: "本", pinyin: "běn", vie: "quyển, vốn", type: "lượng từ/danh từ" },
+                { hanzi: "不客气", pinyin: "bú kèqi", vie: "không có gì", type: "thán từ" },
+                { hanzi: "不", pinyin: "bù", vie: "không", type: "phó từ" },
+                { hanzi: "菜", pinyin: "cài", vie: "rau, món ăn", type: "danh từ" },
+                { hanzi: "茶", pinyin: "chá", vie: "trà", type: "danh từ" },
+                { hanzi: "吃", pinyin: "chī", vie: "ăn", type: "động từ" },
+                { hanzi: "出租车", pinyin: "chūzūchē", vie: "taxi", type: "danh từ" },
+                { hanzi: "打电话", pinyin: "dǎ diànhuà", vie: "gọi điện thoại", type: "động từ ly hợp" },
+                { hanzi: "大", pinyin: "dà", vie: "to, lớn", type: "tính từ" },
+                { hanzi: "的", pinyin: "de", vie: "của, trợ từ sở hữu", type: "trợ từ" },
+                { hanzi: "点", pinyin: "diǎn", vie: "giờ, chút ít, chấm", type: "danh/động/lượng từ" },
+                { hanzi: "电脑", pinyin: "diànnǎo", vie: "máy tính", type: "danh từ" },
+                { hanzi: "电视", pinyin: "diànshì", vie: "ti vi", type: "danh từ" },
+                { hanzi: "电影", pinyin: "diànyǐng", vie: "phim", type: "danh từ" },
+                { hanzi: "东西", pinyin: "dōngxi", vie: "đồ vật", type: "danh từ" },
+                { hanzi: "都", pinyin: "dōu", vie: "đều", type: "phó từ" },
+                { hanzi: "读", pinyin: "dú", vie: "đọc", type: "động từ" },
+                { hanzi: "对不起", pinyin: "duìbuqǐ", vie: "xin lỗi", type: "thán từ" },
+                { hanzi: "多", pinyin: "duō", vie: "nhiều, bao nhiêu", type: "tính từ/đại từ nghi vấn" },
+                { hanzi: "多少", pinyin: "duōshǎo", vie: "bao nhiêu", type: "đại từ nghi vấn" },
+                { hanzi: "儿子", pinyin: "érzi", vie: "con trai", type: "danh từ" },
+                { hanzi: "二", pinyin: "èr", vie: "hai", type: "số từ" },
+                { hanzi: "饭店", pinyin: "fàndiàn", vie: "khách sạn, nhà hàng", type: "danh từ" },
+                { hanzi: "飞机", pinyin: "fēijī", vie: "máy bay", type: "danh từ" },
+                { hanzi: "分钟", pinyin: "fēnzhōng", vie: "phút (thời lượng)", type: "danh từ" },
+                { hanzi: "高兴", pinyin: "gāoxìng", vie: "vui vẻ", type: "tính từ" },
+                { hanzi: "个", pinyin: "gè", vie: "cái, người (lượng từ phổ biến)", type: "lượng từ" },
+                { hanzi: "工作", pinyin: "gōngzuò", vie: "công việc, làm việc", type: "danh/động từ" },
+                { hanzi: "汉语", pinyin: "Hànyǔ", vie: "tiếng Trung", type: "danh từ" },
+                { hanzi: "好", pinyin: "hǎo", vie: "tốt, đẹp", type: "tính từ" },
+                { hanzi: "号", pinyin: "hào", vie: "số, ngày", type: "danh từ" },
+                { hanzi: "喝", pinyin: "hē", vie: "uống", type: "động từ" },
+                { hanzi: "和", pinyin: "hé", vie: "và, với", type: "liên từ/giới từ" },
+                { hanzi: "很", pinyin: "hěn", vie: "rất", type: "phó từ" },
+                { hanzi: "后面", pinyin: "hòumian", vie: "phía sau", type: "danh từ" },
+                { hanzi: "回", pinyin: "huí", vie: "về, quay lại", type: "động từ" },
+                { hanzi: "会", pinyin: "huì", vie: "biết, sẽ, có thể", type: "động từ năng nguyện" },
+                { hanzi: "几", pinyin: "jǐ", vie: "mấy", type: "đại từ nghi vấn" },
+                { hanzi: "家", pinyin: "jiā", vie: "nhà, gia đình", type: "danh từ" },
+                { hanzi: "叫", pinyin: "jiào", vie: "kêu, gọi, tên là", type: "động từ" },
+                { hanzi: "今天", pinyin: "jīntiān", vie: "hôm nay", type: "danh từ" },
+                { hanzi: "九", pinyin: "jiǔ", vie: "chín", type: "số từ" },
+                { hanzi: "开", pinyin: "kāi", vie: "lái (xe), mở", type: "động từ" },
+                { hanzi: "看", pinyin: "kàn", vie: "xem, nhìn", type: "động từ" },
+                { hanzi: "看见", pinyin: "kànjiàn", vie: "nhìn thấy", type: "động từ" },
+                { hanzi: "块", pinyin: "kuài", vie: "cục, miếng, đồng (tiền)", type: "lượng từ" },
+                { hanzi: "来", pinyin: "lái", vie: "đến, tới", type: "động từ" },
+                { hanzi: "老师", pinyin: "lǎoshī", vie: "giáo viên", type: "danh từ" },
+                { hanzi: "了", pinyin: "le", vie: "rồi, trợ từ ngữ khí", type: "trợ từ" },
+                { hanzi: "冷", pinyin: "lěng", vie: "lạnh", type: "tính từ" },
+                { hanzi: "里", pinyin: "lǐ", vie: "trong", type: "danh từ" },
+                { hanzi: "六", pinyin: "liù", vie: "sáu", type: "số từ" },
+                { hanzi: "吗", pinyin: "ma", vie: "không, trợ từ nghi vấn", type: "trợ từ" },
+                { hanzi: "妈妈", pinyin: "māma", vie: "mẹ", type: "danh từ" },
+                { hanzi: "买", pinyin: "mǎi", vie: "mua", type: "động từ" },
+                { hanzi: "猫", pinyin: "māo", vie: "mèo", type: "danh từ" },
+                { hanzi: "没", pinyin: "méi", vie: "không có", type: "phó từ phủ định" },
+                { hanzi: "没关系", pinyin: "méi guānxi", vie: "không sao", type: "thán từ" },
+                { hanzi: "米饭", pinyin: "mǐfàn", vie: "cơm", type: "danh từ" },
+                { hanzi: "名字", pinyin: "míngzi", vie: "tên", type: "danh từ" },
+                { hanzi: "明天", pinyin: "míngtiān", vie: "ngày mai", type: "danh từ" },
+                { hanzi: "哪", pinyin: "nǎ", vie: "nào", type: "đại từ nghi vấn" },
+                { hanzi: "哪儿", pinyin: "nǎr", vie: "đâu", type: "đại từ nghi vấn" },
+                { hanzi: "那", pinyin: "nà", vie: "kia, đó", type: "đại từ chỉ định" },
+                { hanzi: "那儿", pinyin: "nàr", vie: "đó", type: "đại từ chỉ định" },
+                { hanzi: "男", pinyin: "nán", vie: "nam, con trai", type: "tính từ/danh từ" },
+                { hanzi: "呢", pinyin: "ne", vie: "thế nào, trợ từ ngữ khí", type: "trợ từ" },
+                { hanzi: "能", pinyin: "néng", vie: "có thể", type: "động từ năng nguyện" },
+                { hanzi: "你", pinyin: "nǐ", vie: "bạn", type: "đại từ" },
+                { hanzi: "年", pinyin: "nián", vie: "năm", type: "danh từ" },
+                { hanzi: "女儿", pinyin: "nǚ'ér", vie: "con gái", type: "danh từ" },
+                { hanzi: "朋友", pinyin: "péngyou", vie: "bạn bè", type: "danh từ" },
+                { hanzi: "漂亮", pinyin: "piàoliang", vie: "đẹp", type: "tính từ" },
+                { hanzi: "苹果", pinyin: "píngguǒ", vie: "táo", type: "danh từ" },
+                { hanzi: "七", pinyin: "qī", vie: "bảy", type: "số từ" },
+                { hanzi: "钱", pinyin: "qián", vie: "tiền", type: "danh từ" },
+                { hanzi: "前面", pinyin: "qiánmian", vie: "phía trước", type: "danh từ" },
+                { hanzi: "请", pinyin: "qǐng", vie: "mời, xin", type: "động từ" },
+                { hanzi: "去", pinyin: "qù", vie: "đi", type: "động từ" },
+                { hanzi: "热", pinyin: "rè", vie: "nóng", type: "tính từ" },
+                { hanzi: "人", pinyin: "rén", vie: "người", type: "danh từ" },
+                { hanzi: "认识", pinyin: "rènshi", vie: "quen biết", type: "động từ" },
+                { hanzi: "三", pinyin: "sān", vie: "ba", type: "số từ" },
+                { hanzi: "商店", pinyin: "shāngdiàn", vie: "cửa hàng", type: "danh từ" },
+                { hanzi: "上", pinyin: "shàng", vie: "lên, trên", type: "động/danh từ" },
+                { hanzi: "上午", pinyin: "shàngwǔ", vie: "buổi sáng", type: "danh từ" },
+                { hanzi: "少", pinyin: "shǎo", vie: "ít, thiếu", type: "tính từ" },
+                { hanzi: "谁", pinyin: "shéi", vie: "ai", type: "đại từ nghi vấn" },
+                { hanzi: "什么", pinyin: "shénme", vie: "gì", type: "đại từ nghi vấn" },
+                { hanzi: "十", pinyin: "shí", vie: "mười", type: "số từ" },
+                { hanzi: "时候", pinyin: "shíhou", vie: "thời gian, lúc", type: "danh từ" },
+                { hanzi: "是", pinyin: "shì", vie: "là", type: "động từ" },
+                { hanzi: "书", pinyin: "shū", vie: "sách", type: "danh từ" },
+                { hanzi: "水", pinyin: "shuǐ", vie: "nước", type: "danh từ" },
+                { hanzi: "水果", pinyin: "shuǐguǒ", vie: "trái cây", type: "danh từ" },
+                { hanzi: "睡觉", pinyin: "shuì jiào", vie: "ngủ", type: "động từ ly hợp" },
+                { hanzi: "说话", pinyin: "shuō huà", vie: "nói chuyện", type: "động từ ly hợp" },
+                { hanzi: "四", pinyin: "sì", vie: "bốn", type: "số từ" },
+                { hanzi: "岁", pinyin: "suì", vie: "tuổi", type: "danh từ" },
+                { hanzi: "他", pinyin: "tā", vie: "anh ấy", type: "đại từ" },
+                { hanzi: "她", pinyin: "tā", vie: "cô ấy", type: "đại từ" },
+                { hanzi: "太", pinyin: "tài", vie: "quá, lắm", type: "phó từ" },
+                { hanzi: "天气", pinyin: "tiānqì", vie: "thời tiết", type: "danh từ" },
+                { hanzi: "听", pinyin: "tīng", vie: "nghe", type: "động từ" },
+                { hanzi: "同学", pinyin: "tóngxué", vie: "bạn học", type: "danh từ" },
+                { hanzi: "喂", pinyin: "wéi", vie: "alô (nghe điện thoại)", type: "thán từ" },
+                { hanzi: "我", pinyin: "wǒ", vie: "tôi", type: "đại từ" },
+                { hanzi: "我们", pinyin: "wǒmen", vie: "chúng tôi", type: "đại từ" },
+                { hanzi: "五", pinyin: "wǔ", vie: "năm", type: "số từ" },
+                { hanzi: "喜欢", pinyin: "xǐhuān", vie: "thích", type: "động từ" },
+                { hanzi: "下", pinyin: "xià", vie: "xuống, dưới", type: "động/danh từ" },
+                { hanzi: "下午", pinyin: "xiàwǔ", vie: "buổi chiều", type: "danh từ" },
+                { hanzi: "下雨", pinyin: "xià yǔ", vie: "mưa", type: "động từ ly hợp" },
+                { hanzi: "先生", pinyin: "xiānsheng", vie: "tiên sinh, ông", type: "danh từ" },
+                { hanzi: "现在", pinyin: "xiànzài", vie: "bây giờ", type: "danh từ" },
+                { hanzi: "想", pinyin: "xi
