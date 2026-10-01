@@ -91,7 +91,7 @@
             </div>
         </section>
 
-        <!-- PHẦN TỪ VỰNG (TÍCH HỢP FULL HSK 1-3) -->
+        <!-- PHẦN TỪ VỰNG -->
         <section id="vocab" class="mb-20 scroll-mt-24">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-10 pb-6 border-b border-slate-800 gap-4">
                 <h2 class="text-4xl font-extrabold text-white tracking-tight flex items-center gap-3">
@@ -106,7 +106,7 @@
             <div id="vocab-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"></div>
         </section>
 
-        <!-- PHẦN NGỮ PHÁP (TÍCH HỢP FULL HSK 1-3) -->
+        <!-- PHẦN NGỮ PHÁP -->
         <section id="grammar" class="mb-20 scroll-mt-24">
             <h2 class="text-4xl font-extrabold text-white tracking-tight flex items-center gap-3 mb-10 pb-6 border-b border-slate-800">
                 <i class="fas fa-spell-check text-klBlue"></i> Tổng Hợp Ngữ Pháp
@@ -114,7 +114,7 @@
             <div id="grammar-list" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
         </section>
 
-        <!-- PHẦN LUYỆN TẬP (TRẮC NGHIỆM & DỊCH - LẤY DỮ LIỆU TỪ PHẦN TRÊN) -->
+        <!-- PHẦN LUYỆN TẬP -->
         <section id="practice" class="mb-20 scroll-mt-24 bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-700">
             <h2 class="text-4xl font-extrabold text-white tracking-tight flex items-center gap-3 mb-10">
                 <i class="fas fa-brain text-klPink"></i> Khu Vực Luyện Tập
@@ -157,9 +157,6 @@
         </div>
     </div>
 
-    <!-- ========================================================================== -->
-    <!-- ==================== DỮ LIỆU FULL HSK 1-3 TÍCH HỢP ======================== -->
-    <!-- ========================================================================== -->
     <script>
         // --- 1. DỮ LIỆU TỪ VỰNG HSK 1-3 ---
         const hskData = {
@@ -169,7 +166,7 @@
                 { hanzi: "爸爸", pinyin: "bàba", vie: "bố", type: "danh từ" },
                 { hanzi: "杯子", pinyin: "bēizi", vie: "cốc", type: "danh từ" },
                 { hanzi: "北京", pinyin: "Běijīng", vie: "Bắc Kinh", type: "danh từ riêng" },
-                { hanzi: "本", pinyin: "běn", vie: "quyển, vốn", type: "lượng từ/danh từ" },
+                { hanzi: "本", pinyin: "běn", vie: "quyển", type: "lượng từ" },
                 { hanzi: "不客气", pinyin: "bú kèqi", vie: "không có gì", type: "thán từ" },
                 { hanzi: "不", pinyin: "bù", vie: "không", type: "phó từ" },
                 { hanzi: "菜", pinyin: "cài", vie: "rau, món ăn", type: "danh từ" },
@@ -177,9 +174,9 @@
                 { hanzi: "吃", pinyin: "chī", vie: "ăn", type: "động từ" },
                 { hanzi: "出租车", pinyin: "chūzūchē", vie: "taxi", type: "danh từ" },
                 { hanzi: "打电话", pinyin: "dǎ diànhuà", vie: "gọi điện thoại", type: "động từ ly hợp" },
-                { hanzi: "大", pinyin: "dà", vie: "to, lớn", type: "tính từ" },
-                { hanzi: "的", pinyin: "de", vie: "của, trợ từ sở hữu", type: "trợ từ" },
-                { hanzi: "点", pinyin: "diǎn", vie: "giờ, chút ít, chấm", type: "danh/động/lượng từ" },
+                { hanzi: "大", pinyin: "dà", vie: "lớn", type: "tính từ" },
+                { hanzi: "的", pinyin: "de", vie: "của", type: "trợ từ" },
+                { hanzi: "点", pinyin: "diǎn", vie: "giờ", type: "danh từ" },
                 { hanzi: "电脑", pinyin: "diànnǎo", vie: "máy tính", type: "danh từ" },
                 { hanzi: "电视", pinyin: "diànshì", vie: "ti vi", type: "danh từ" },
                 { hanzi: "电影", pinyin: "diànyǐng", vie: "phim", type: "danh từ" },
@@ -187,56 +184,50 @@
                 { hanzi: "都", pinyin: "dōu", vie: "đều", type: "phó từ" },
                 { hanzi: "读", pinyin: "dú", vie: "đọc", type: "động từ" },
                 { hanzi: "对不起", pinyin: "duìbuqǐ", vie: "xin lỗi", type: "thán từ" },
-                { hanzi: "多", pinyin: "duō", vie: "nhiều, bao nhiêu", type: "tính từ/đại từ nghi vấn" },
-                { hanzi: "多少", pinyin: "duōshǎo", vie: "bao nhiêu", type: "đại từ nghi vấn" },
+                { hanzi: "多", pinyin: "duō", vie: "nhiều", type: "tính từ" },
+                { hanzi: "多少", pinyin: "duōshǎo", vie: "bao nhiêu", type: "đại từ" },
                 { hanzi: "儿子", pinyin: "érzi", vie: "con trai", type: "danh từ" },
                 { hanzi: "二", pinyin: "èr", vie: "hai", type: "số từ" },
-                { hanzi: "饭店", pinyin: "fàndiàn", vie: "khách sạn, nhà hàng", type: "danh từ" },
+                { hanzi: "饭店", pinyin: "fàndiàn", vie: "nhà hàng", type: "danh từ" },
                 { hanzi: "飞机", pinyin: "fēijī", vie: "máy bay", type: "danh từ" },
-                { hanzi: "分钟", pinyin: "fēnzhōng", vie: "phút (thời lượng)", type: "danh từ" },
+                { hanzi: "分钟", pinyin: "fēnzhōng", vie: "phút", type: "danh từ" },
                 { hanzi: "高兴", pinyin: "gāoxìng", vie: "vui vẻ", type: "tính từ" },
-                { hanzi: "个", pinyin: "gè", vie: "cái, người (lượng từ phổ biến)", type: "lượng từ" },
-                { hanzi: "工作", pinyin: "gōngzuò", vie: "công việc, làm việc", type: "danh/động từ" },
+                { hanzi: "个", pinyin: "gè", vie: "cái, người", type: "lượng từ" },
+                { hanzi: "工作", pinyin: "gōngzuò", vie: "công việc", type: "danh/động từ" },
                 { hanzi: "汉语", pinyin: "Hànyǔ", vie: "tiếng Trung", type: "danh từ" },
-                { hanzi: "好", pinyin: "hǎo", vie: "tốt, đẹp", type: "tính từ" },
-                { hanzi: "号", pinyin: "hào", vie: "số, ngày", type: "danh từ" },
+                { hanzi: "好", pinyin: "hǎo", vie: "tốt", type: "tính từ" },
+                { hanzi: "号", pinyin: "hào", vie: "ngày, số", type: "danh từ" },
                 { hanzi: "喝", pinyin: "hē", vie: "uống", type: "động từ" },
-                { hanzi: "和", pinyin: "hé", vie: "và, với", type: "liên từ/giới từ" },
+                { hanzi: "和", pinyin: "hé", vie: "và", type: "liên từ" },
                 { hanzi: "很", pinyin: "hěn", vie: "rất", type: "phó từ" },
                 { hanzi: "后面", pinyin: "hòumian", vie: "phía sau", type: "danh từ" },
-                { hanzi: "回", pinyin: "huí", vie: "về, quay lại", type: "động từ" },
-                { hanzi: "会", pinyin: "huì", vie: "biết, sẽ, có thể", type: "động từ năng nguyện" },
-                { hanzi: "几", pinyin: "jǐ", vie: "mấy", type: "đại từ nghi vấn" },
-                { hanzi: "家", pinyin: "jiā", vie: "nhà, gia đình", type: "danh từ" },
-                { hanzi: "叫", pinyin: "jiào", vie: "kêu, gọi, tên là", type: "động từ" },
+                { hanzi: "回", pinyin: "huí", vie: "về", type: "động từ" },
+                { hanzi: "会", pinyin: "huì", vie: "biết, có thể", type: "động từ" },
+                { hanzi: "几", pinyin: "jǐ", vie: "mấy", type: "đại từ" },
+                { hanzi: "家", pinyin: "jiā", vie: "nhà", type: "danh từ" },
+                { hanzi: "叫", pinyin: "jiào", vie: "tên là", type: "động từ" },
                 { hanzi: "今天", pinyin: "jīntiān", vie: "hôm nay", type: "danh từ" },
                 { hanzi: "九", pinyin: "jiǔ", vie: "chín", type: "số từ" },
-                { hanzi: "开", pinyin: "kāi", vie: "lái (xe), mở", type: "động từ" },
+                { hanzi: "开", pinyin: "kāi", vie: "mở, lái", type: "động từ" },
                 { hanzi: "看", pinyin: "kàn", vie: "xem, nhìn", type: "động từ" },
-                { hanzi: "看见", pinyin: "kànjiàn", vie: "nhìn thấy", type: "động từ" },
-                { hanzi: "块", pinyin: "kuài", vie: "cục, miếng, đồng (tiền)", type: "lượng từ" },
-                { hanzi: "来", pinyin: "lái", vie: "đến, tới", type: "động từ" },
+                { hanzi: "块", pinyin: "kuài", vie: "đồng (tiền)", type: "lượng từ" },
+                { hanzi: "来", pinyin: "lái", vie: "đến", type: "động từ" },
                 { hanzi: "老师", pinyin: "lǎoshī", vie: "giáo viên", type: "danh từ" },
-                { hanzi: "了", pinyin: "le", vie: "rồi, trợ từ ngữ khí", type: "trợ từ" },
+                { hanzi: "了", pinyin: "le", vie: "rồi", type: "trợ từ" },
                 { hanzi: "冷", pinyin: "lěng", vie: "lạnh", type: "tính từ" },
                 { hanzi: "里", pinyin: "lǐ", vie: "trong", type: "danh từ" },
                 { hanzi: "六", pinyin: "liù", vie: "sáu", type: "số từ" },
-                { hanzi: "吗", pinyin: "ma", vie: "không, trợ từ nghi vấn", type: "trợ từ" },
+                { hanzi: "吗", pinyin: "ma", vie: "không", type: "trợ từ" },
                 { hanzi: "妈妈", pinyin: "māma", vie: "mẹ", type: "danh từ" },
                 { hanzi: "买", pinyin: "mǎi", vie: "mua", type: "động từ" },
                 { hanzi: "猫", pinyin: "māo", vie: "mèo", type: "danh từ" },
-                { hanzi: "没", pinyin: "méi", vie: "không có", type: "phó từ phủ định" },
                 { hanzi: "没关系", pinyin: "méi guānxi", vie: "không sao", type: "thán từ" },
                 { hanzi: "米饭", pinyin: "mǐfàn", vie: "cơm", type: "danh từ" },
                 { hanzi: "名字", pinyin: "míngzi", vie: "tên", type: "danh từ" },
                 { hanzi: "明天", pinyin: "míngtiān", vie: "ngày mai", type: "danh từ" },
-                { hanzi: "哪", pinyin: "nǎ", vie: "nào", type: "đại từ nghi vấn" },
-                { hanzi: "哪儿", pinyin: "nǎr", vie: "đâu", type: "đại từ nghi vấn" },
-                { hanzi: "那", pinyin: "nà", vie: "kia, đó", type: "đại từ chỉ định" },
-                { hanzi: "那儿", pinyin: "nàr", vie: "đó", type: "đại từ chỉ định" },
-                { hanzi: "男", pinyin: "nán", vie: "nam, con trai", type: "tính từ/danh từ" },
-                { hanzi: "呢", pinyin: "ne", vie: "thế nào, trợ từ ngữ khí", type: "trợ từ" },
-                { hanzi: "能", pinyin: "néng", vie: "có thể", type: "động từ năng nguyện" },
+                { hanzi: "哪", pinyin: "nǎ", vie: "nào", type: "đại từ" },
+                { hanzi: "呢", pinyin: "ne", vie: "thế còn...", type: "trợ từ" },
+                { hanzi: "能", pinyin: "néng", vie: "có thể", type: "động từ" },
                 { hanzi: "你", pinyin: "nǐ", vie: "bạn", type: "đại từ" },
                 { hanzi: "年", pinyin: "nián", vie: "năm", type: "danh từ" },
                 { hanzi: "女儿", pinyin: "nǚ'ér", vie: "con gái", type: "danh từ" },
@@ -246,42 +237,698 @@
                 { hanzi: "七", pinyin: "qī", vie: "bảy", type: "số từ" },
                 { hanzi: "钱", pinyin: "qián", vie: "tiền", type: "danh từ" },
                 { hanzi: "前面", pinyin: "qiánmian", vie: "phía trước", type: "danh từ" },
-                { hanzi: "请", pinyin: "qǐng", vie: "mời, xin", type: "động từ" },
+                { hanzi: "请", pinyin: "qǐng", vie: "mời", type: "động từ" },
                 { hanzi: "去", pinyin: "qù", vie: "đi", type: "động từ" },
                 { hanzi: "热", pinyin: "rè", vie: "nóng", type: "tính từ" },
                 { hanzi: "人", pinyin: "rén", vie: "người", type: "danh từ" },
                 { hanzi: "认识", pinyin: "rènshi", vie: "quen biết", type: "động từ" },
                 { hanzi: "三", pinyin: "sān", vie: "ba", type: "số từ" },
                 { hanzi: "商店", pinyin: "shāngdiàn", vie: "cửa hàng", type: "danh từ" },
-                { hanzi: "上", pinyin: "shàng", vie: "lên, trên", type: "động/danh từ" },
+                { hanzi: "上", pinyin: "shàng", vie: "trên", type: "danh từ" },
                 { hanzi: "上午", pinyin: "shàngwǔ", vie: "buổi sáng", type: "danh từ" },
-                { hanzi: "少", pinyin: "shǎo", vie: "ít, thiếu", type: "tính từ" },
-                { hanzi: "谁", pinyin: "shéi", vie: "ai", type: "đại từ nghi vấn" },
-                { hanzi: "什么", pinyin: "shénme", vie: "gì", type: "đại từ nghi vấn" },
+                { hanzi: "少", pinyin: "shǎo", vie: "ít", type: "tính từ" },
+                { hanzi: "谁", pinyin: "shéi", vie: "ai", type: "đại từ" },
+                { hanzi: "什么", pinyin: "shénme", vie: "gì", type: "đại từ" },
                 { hanzi: "十", pinyin: "shí", vie: "mười", type: "số từ" },
-                { hanzi: "时候", pinyin: "shíhou", vie: "thời gian, lúc", type: "danh từ" },
+                { hanzi: "时候", pinyin: "shíhou", vie: "lúc, thời gian", type: "danh từ" },
                 { hanzi: "是", pinyin: "shì", vie: "là", type: "động từ" },
                 { hanzi: "书", pinyin: "shū", vie: "sách", type: "danh từ" },
                 { hanzi: "水", pinyin: "shuǐ", vie: "nước", type: "danh từ" },
                 { hanzi: "水果", pinyin: "shuǐguǒ", vie: "trái cây", type: "danh từ" },
-                { hanzi: "睡觉", pinyin: "shuì jiào", vie: "ngủ", type: "động từ ly hợp" },
-                { hanzi: "说话", pinyin: "shuō huà", vie: "nói chuyện", type: "động từ ly hợp" },
+                { hanzi: "睡觉", pinyin: "shuì jiào", vie: "ngủ", type: "động từ" },
+                { hanzi: "说话", pinyin: "shuō huà", vie: "nói chuyện", type: "động từ" },
                 { hanzi: "四", pinyin: "sì", vie: "bốn", type: "số từ" },
                 { hanzi: "岁", pinyin: "suì", vie: "tuổi", type: "danh từ" },
                 { hanzi: "他", pinyin: "tā", vie: "anh ấy", type: "đại từ" },
                 { hanzi: "她", pinyin: "tā", vie: "cô ấy", type: "đại từ" },
-                { hanzi: "太", pinyin: "tài", vie: "quá, lắm", type: "phó từ" },
+                { hanzi: "太", pinyin: "tài", vie: "quá", type: "phó từ" },
                 { hanzi: "天气", pinyin: "tiānqì", vie: "thời tiết", type: "danh từ" },
                 { hanzi: "听", pinyin: "tīng", vie: "nghe", type: "động từ" },
                 { hanzi: "同学", pinyin: "tóngxué", vie: "bạn học", type: "danh từ" },
-                { hanzi: "喂", pinyin: "wéi", vie: "alô (nghe điện thoại)", type: "thán từ" },
+                { hanzi: "喂", pinyin: "wèi", vie: "alô", type: "thán từ" },
                 { hanzi: "我", pinyin: "wǒ", vie: "tôi", type: "đại từ" },
                 { hanzi: "我们", pinyin: "wǒmen", vie: "chúng tôi", type: "đại từ" },
                 { hanzi: "五", pinyin: "wǔ", vie: "năm", type: "số từ" },
                 { hanzi: "喜欢", pinyin: "xǐhuān", vie: "thích", type: "động từ" },
-                { hanzi: "下", pinyin: "xià", vie: "xuống, dưới", type: "động/danh từ" },
+                { hanzi: "下", pinyin: "xià", vie: "dưới", type: "danh từ" },
                 { hanzi: "下午", pinyin: "xiàwǔ", vie: "buổi chiều", type: "danh từ" },
-                { hanzi: "下雨", pinyin: "xià yǔ", vie: "mưa", type: "động từ ly hợp" },
+                { hanzi: "下雨", pinyin: "xià yǔ", vie: "mưa", type: "động từ" },
                 { hanzi: "先生", pinyin: "xiānsheng", vie: "tiên sinh, ông", type: "danh từ" },
                 { hanzi: "现在", pinyin: "xiànzài", vie: "bây giờ", type: "danh từ" },
-                { hanzi: "想", pinyin: "xi
+                { hanzi: "想", pinyin: "xiǎng", vie: "muốn, nhớ", type: "động từ" },
+                { hanzi: "小", pinyin: "xiǎo", vie: "nhỏ", type: "tính từ" },
+                { hanzi: "小姐", pinyin: "xiǎojiě", vie: "cô tiểu thư, cô", type: "danh từ" },
+                { hanzi: "些", pinyin: "xiē", vie: "mấy, vài", type: "lượng từ" },
+                { hanzi: "写", pinyin: "xiě", vie: "viết", type: "động từ" },
+                { hanzi: "谢谢", pinyin: "xièxie", vie: "cảm ơn", type: "động từ" },
+                { hanzi: "星期", pinyin: "xīngqī", vie: "tuần", type: "danh từ" },
+                { hanzi: "学生", pinyin: "xuésheng", vie: "học sinh", type: "danh từ" },
+                { hanzi: "学习", pinyin: "xuéxí", vie: "học tập", type: "động từ" },
+                { hanzi: "学校", pinyin: "xuéxiào", vie: "trường học", type: "danh từ" },
+                { hanzi: "一", pinyin: "yī", vie: "một", type: "số từ" },
+                { hanzi: "一点儿", pinyin: "yīdiǎnr", vie: "một chút", type: "lượng từ" },
+                { hanzi: "衣服", pinyin: "yīfu", vie: "quần áo", type: "danh từ" },
+                { hanzi: "医生", pinyin: "yīshēng", vie: "bác sĩ", type: "danh từ" },
+                { hanzi: "医院", pinyin: "yīyuàn", vie: "bệnh viện", type: "danh từ" },
+                { hanzi: "椅子", pinyin: "yǐzi", vie: "ghế", type: "danh từ" },
+                { hanzi: "有", pinyin: "yǒu", vie: "có", type: "động từ" },
+                { hanzi: "月", pinyin: "yuè", vie: "tháng, trăng", type: "danh từ" },
+                { hanzi: "再见", pinyin: "zàijiàn", vie: "tạm biệt", type: "thán từ" },
+                { hanzi: "怎么", pinyin: "zěnme", vie: "thế nào", type: "đại từ" },
+                { hanzi: "怎么样", pinyin: "zěnmeyàng", vie: "thế nào (ra sao)", type: "đại từ" },
+                { hanzi: "这", pinyin: "zhè", vie: "này, đây", type: "đại từ" },
+                { hanzi: "中国", pinyin: "Zhōngguó", vie: "Trung Quốc", type: "danh từ" },
+                { hanzi: "中午", pinyin: "zhōngwǔ", vie: "buổi trưa", type: "danh từ" },
+                { hanzi: "住", pinyin: "zhù", vie: "sống, ở", type: "động từ" },
+                { hanzi: "桌子", pinyin: "zhuōzi", vie: "bàn", type: "danh từ" },
+                { hanzi: "字", pinyin: "zì", vie: "chữ", type: "danh từ" },
+                { hanzi: "昨天", pinyin: "zuótiān", vie: "hôm qua", type: "danh từ" },
+                { hanzi: "坐", pinyin: "zuò", vie: "ngồi", type: "động từ" },
+                { hanzi: "做", pinyin: "zuò", vie: "làm", type: "động từ" }
+            ],
+            hsk2: [
+                { hanzi: "吧", pinyin: "ba", vie: "nhé, đi (trợ từ)", type: "trợ từ" },
+                { hanzi: "白", pinyin: "bái", vie: "màu trắng", type: "tính từ" },
+                { hanzi: "百", pinyin: "bǎi", vie: "trăm", type: "số từ" },
+                { hanzi: "帮助", pinyin: "bāngzhù", vie: "giúp đỡ", type: "động từ" },
+                { hanzi: "报纸", pinyin: "bàozhǐ", vie: "báo", type: "danh từ" },
+                { hanzi: "比", pinyin: "bǐ", vie: "so với", type: "giới từ" },
+                { hanzi: "宾馆", pinyin: "bīnguǎn", vie: "khách sạn", type: "danh từ" },
+                { hanzi: "长", pinyin: "cháng", vie: "dài", type: "tính từ" },
+                { hanzi: "唱歌", pinyin: "chàng gē", vie: "hát", type: "động từ" },
+                { hanzi: "出", pinyin: "chū", vie: "ra", type: "động từ" },
+                { hanzi: "穿", pinyin: "chuān", vie: "mặc", type: "động từ" },
+                { hanzi: "次", pinyin: "cì", vie: "lần", type: "lượng từ" },
+                { hanzi: "从", pinyin: "cóng", vie: "từ (địa điểm/thời gian)", type: "giới từ" },
+                { hanzi: "错", pinyin: "cuò", vie: "sai", type: "tính từ" },
+                { hanzi: "打篮球", pinyin: "dǎ lánqiú", vie: "đánh bóng rổ", type: "động từ" },
+                { hanzi: "大家", pinyin: "dàjiā", vie: "mọi người", type: "đại từ" },
+                { hanzi: "到", pinyin: "dào", vie: "đến", type: "động từ" },
+                { hanzi: "得", pinyin: "de", vie: "trợ từ kết cấu", type: "trợ từ" },
+                { hanzi: "等", pinyin: "děng", vie: "đợi", type: "động từ" },
+                { hanzi: "弟弟", pinyin: "dìdi", vie: "em trai", type: "danh từ" },
+                { hanzi: "第一", pinyin: "dì-yī", vie: "thứ nhất", type: "số từ" },
+                { hanzi: "懂", pinyin: "dǒng", vie: "hiểu", type: "động từ" },
+                { hanzi: "对", pinyin: "duì", vie: "đúng, đối với", type: "tính/giới từ" },
+                { hanzi: "房间", pinyin: "fángjiān", vie: "phòng", type: "danh từ" },
+                { hanzi: "非常", pinyin: "fēicháng", vie: "vô cùng", type: "phó từ" },
+                { hanzi: "服务员", pinyin: "fúwùyuán", vie: "phục vụ bàn", type: "danh từ" },
+                { hanzi: "高", pinyin: "gāo", vie: "cao", type: "tính từ" },
+                { hanzi: "告诉", pinyin: "gàosù", vie: "nói cho biết", type: "động từ" },
+                { hanzi: "哥哥", pinyin: "gēge", vie: "anh trai", type: "danh từ" },
+                { hanzi: "给", pinyin: "gěi", vie: "cho, đưa", type: "động/giới từ" },
+                { hanzi: "公共汽车", pinyin: "gōnggòng qìchē", vie: "xe buýt", type: "danh từ" },
+                { hanzi: "公司", pinyin: "gōngsī", vie: "công ty", type: "danh từ" },
+                { hanzi: "贵", pinyin: "guì", vie: "đắt", type: "tính từ" },
+                { hanzi: "过", pinyin: "guò", vie: "qua, trải qua", type: "động từ/trợ từ" },
+                { hanzi: "还", pinyin: "hái", vie: "còn, vẫn", type: "phó từ" },
+                { hanzi: "孩子", pinyin: "háizi", vie: "trẻ con", type: "danh từ" },
+                { hanzi: "好吃", pinyin: "hǎochī", vie: "ngon", type: "tính từ" },
+                { hanzi: "黑", pinyin: "hēi", vie: "màu đen", type: "tính từ" },
+                { hanzi: "红", pinyin: "hóng", vie: "màu đỏ", type: "tính từ" },
+                { hanzi: "机场", pinyin: "jīchǎng", vie: "sân bay", type: "danh từ" },
+                { hanzi: "鸡蛋", pinyin: "jīdàn", vie: "trứng gà", type: "danh từ" },
+                { hanzi: "件", pinyin: "jiàn", vie: "cái, chiếc (áo quần)", type: "lượng từ" },
+                { hanzi: "教室", pinyin: "jiàoshì", vie: "phòng học", type: "danh từ" },
+                { hanzi: "姐姐", pinyin: "jiějie", vie: "chị gái", type: "danh từ" },
+                { hanzi: "介绍", pinyin: "jièshào", vie: "giới thiệu", type: "động từ" },
+                { hanzi: "进", pinyin: "jìn", vie: "vào", type: "động từ" },
+                { hanzi: "近", pinyin: "jìn", vie: "gần", type: "tính từ" },
+                { hanzi: "就", pinyin: "jiù", vie: "thì, ngay", type: "phó từ" },
+                { hanzi: "觉得", pinyin: "juéde", vie: "cảm thấy", type: "động từ" },
+                { hanzi: "咖啡", pinyin: "kāfēi", vie: "cà phê", type: "danh từ" },
+                { hanzi: "开始", pinyin: "kāishǐ", vie: "bắt đầu", type: "động/danh từ" },
+                { hanzi: "考试", pinyin: "kǎoshì", vie: "thi cử", type: "động/danh từ" },
+                { hanzi: "可能", pinyin: "kěnéng", vie: "có lẽ", type: "phó từ/động từ" },
+                { hanzi: "可以", pinyin: "kěyǐ", vie: "có thể", type: "động từ năng nguyện" },
+                { hanzi: "快", pinyin: "kuài", vie: "nhanh", type: "tính từ" },
+                { hanzi: "快乐", pinyin: "kuàilè", vie: "vui vẻ", type: "tính từ" },
+                { hanzi: "累", pinyin: "lèi", vie: "mệt", type: "tính từ" },
+                { hanzi: "旅游", pinyin: "lǚyóu", vie: "du lịch", type: "động từ" },
+                { hanzi: "卖", pinyin: "mài", vie: "bán", type: "động từ" },
+                { hanzi: "慢", pinyin: "màn", vie: "chậm", type: "tính từ" },
+                { hanzi: "忙", pinyin: "máng", vie: "bận", type: "tính từ" },
+                { hanzi: "每", pinyin: "měi", vie: "mỗi", type: "đại từ" },
+                { hanzi: "妹妹", pinyin: "mèimei", vie: "em gái", type: "danh từ" },
+                { hanzi: "门", pinyin: "mén", vie: "cửa", type: "danh từ" },
+                { hanzi: "男人", pinyin: "nánrén", vie: "đàn ông", type: "danh từ" },
+                { hanzi: "您", pinyin: "nín", vie: "ngài (kính ngữ)", type: "đại từ" },
+                { hanzi: "牛奶", pinyin: "niúnǎi", vie: "sữa bò", type: "danh từ" },
+                { hanzi: "女人", pinyin: "nǚrén", vie: "phụ nữ", type: "danh từ" },
+                { hanzi: "旁边", pinyin: "pángbiān", vie: "bên cạnh", type: "danh từ" },
+                { hanzi: "跑步", pinyin: "pǎobù", vie: "chạy bộ", type: "động từ" },
+                { hanzi: "便宜", pinyin: "piányi", vie: "rẻ", type: "tính từ" },
+                { hanzi: "机票", pinyin: "jīpiào", vie: "vé máy bay", type: "danh từ" },
+                { hanzi: "踢足球", pinyin: "tī zúqiú", vie: "đá bóng", type: "động từ" },
+                { hanzi: "题", pinyin: "tí", vie: "câu hỏi, đề thi", type: "danh từ" },
+                { hanzi: "外", pinyin: "wài", vie: "ngoài", type: "danh từ" },
+                { hanzi: "完", pinyin: "wán", vie: "xong", type: "động từ" },
+                { hanzi: "玩", pinyin: "wán", vie: "chơi", type: "động từ" },
+                { hanzi: "晚上", pinyin: "wǎnshang", vie: "buổi tối", type: "danh từ" },
+                { hanzi: "为什么", pinyin: "wèishénme", vie: "tại sao", type: "đại từ" },
+                { hanzi: "问", pinyin: "wèn", vie: "hỏi", type: "động từ" },
+                { hanzi: "希望", pinyin: "xīwàng", vie: "hy vọng", type: "động/danh từ" },
+                { hanzi: "洗", pinyin: "xǐ", vie: "rửa", type: "động từ" },
+                { hanzi: "小时", pinyin: "xiǎoshí", vie: "tiếng đồng hồ", type: "danh từ" },
+                { hanzi: "笑", pinyin: "xiào", vie: "cười", type: "động từ" },
+                { hanzi: "新", pinyin: "xīn", vie: "mới", type: "tính từ" },
+                { hanzi: "姓", pinyin: "xìng", vie: "họ", type: "danh/động từ" },
+                { hanzi: "休息", pinyin: "xiūxi", vie: "nghỉ ngơi", type: "động từ" },
+                { hanzi: "雪", pinyin: "xuě", vie: "tuyết", type: "danh từ" },
+                { hanzi: "颜色", pinyin: "yánsè", vie: "màu sắc", type: "danh từ" },
+                { hanzi: "眼睛", pinyin: "yǎnjing", vie: "mắt", type: "danh từ" },
+                { hanzi: "羊肉", pinyin: "yángròu", vie: "thịt cừu", type: "danh từ" },
+                { hanzi: "药", pinyin: "yào", vie: "thuốc", type: "danh từ" },
+                { hanzi: "要", pinyin: "yào", vie: "muốn, cần", type: "động từ" },
+                { hanzi: "也", pinyin: "yě", vie: "cũng", type: "phó từ" },
+                { hanzi: "一起", pinyin: "yīqǐ", vie: "cùng nhau", type: "phó từ" },
+                { hanzi: "意思", pinyin: "yìsi", vie: "ý nghĩa", type: "danh từ" },
+                { hanzi: "阴", pinyin: "yīn", vie: "âm u", type: "tính từ" },
+                { hanzi: "因为", pinyin: "yīnwèi", vie: "bởi vì", type: "liên từ" },
+                { hanzi: "所以", pinyin: "suǒyǐ", vie: "cho nên", type: "liên từ" },
+                { hanzi: "游泳", pinyin: "yóuyǒng", vie: "bơi lội", type: "động từ" },
+                { hanzi: "右边", pinyin: "yòubian", vie: "phía phải", type: "danh từ" },
+                { hanzi: "远", pinyin: "yuǎn", vie: "xa", type: "tính từ" },
+                { hanzi: "运动", pinyin: "yùndòng", vie: "vận động, thể thao", type: "động/danh từ" },
+                { hanzi: "再", pinyin: "zài", vie: "lại (nữa)", type: "phó từ" },
+                { hanzi: "早", pinyin: "zǎo", vie: "sớm", type: "tính từ" },
+                { hanzi: "丈夫", pinyin: "zhàngfu", vie: "chồng", type: "danh từ" },
+                { hanzi: "找", pinyin: "zhǎo", vie: "tìm", type: "động từ" },
+                { hanzi: "着", pinyin: "zhe", vie: "trợ từ tiếp diễn", type: "trợ từ" },
+                { hanzi: "真", pinyin: "zhēn", vie: "thật là", type: "phó từ" },
+                { hanzi: "正在", pinyin: "zhèngzài", vie: "đang", type: "phó từ" },
+                { hanzi: "知道", pinyin: "zhīdao", vie: "biết", type: "động từ" },
+                { hanzi: "准备", pinyin: "zhǔnbèi", vie: "chuẩn bị", type: "động từ" },
+                { hanzi: "自行车", pinyin: "zìxíngchē", vie: "xe đạp", type: "danh từ" },
+                { hanzi: "走", pinyin: "zǒu", vie: "đi, bước", type: "động từ" },
+                { hanzi: "最", pinyin: "zuì", vie: "nhất", type: "phó từ" },
+                { hanzi: "左边", pinyin: "zuǒbian", vie: "phía trái", type: "danh từ" }
+            ],
+            hsk3: [
+                { hanzi: "阿姨", pinyin: "āyí", vie: "cô, dì", type: "danh từ" },
+                { hanzi: "啊", pinyin: "a", vie: "a (trợ từ cảm thán)", type: "trợ từ" },
+                { hanzi: "矮", pinyin: "ǎi", vie: "lùn, thấp", type: "tính từ" },
+                { hanzi: "爱好", pinyin: "àihào", vie: "sở thích", type: "danh/động từ" },
+                { hanzi: "安静", pinyin: "ānjìng", vie: "yên tĩnh", type: "tính từ" },
+                { hanzi: "把", pinyin: "bǎ", vie: "cầm, chữ 把", type: "giới/lượng từ" },
+                { hanzi: "搬", pinyin: "bān", vie: "dọn (nhà)", type: "động từ" },
+                { hanzi: "班", pinyin: "bān", vie: "lớp", type: "danh từ" },
+                { hanzi: "半", pinyin: "bàn", vie: "nửa", type: "số từ" },
+                { hanzi: "办法", pinyin: "bànfǎ", vie: "biện pháp", type: "danh từ" },
+                { hanzi: "办公室", pinyin: "bàngōngshì", vie: "văn phòng", type: "danh từ" },
+                { hanzi: "半", pinyin: "bàn", vie: "nửa", type: "số từ" },
+                { hanzi: "帮忙", pinyin: "bāngmáng", vie: "giúp đỡ", type: "động từ" },
+                { hanzi: "包", pinyin: "bāo", vie: "túi, gói", type: "danh từ" },
+                { hanzi: "饱", pinyin: "bǎo", vie: "no", type: "tính từ" },
+                { hanzi: "北方", pinyin: "běifāng", vie: "phương Bắc", type: "danh từ" },
+                { hanzi: "被", pinyin: "bèi", vie: "bị (bị động)", type: "giới từ" },
+                { hanzi: "鼻子", pinyin: "bízi", vie: "mũi", type: "danh từ" },
+                { hanzi: "笔记本", pinyin: "bǐjìběn", vie: "sổ tay, laptop", type: "danh từ" },
+                { hanzi: "必须", pinyin: "bìxū", vie: "phải", type: "phó từ" },
+                { hanzi: "变化", pinyin: "biànhuà", vie: "thay đổi", type: "động/danh từ" },
+                { hanzi: "别人", pinyin: "biérén", vie: "người khác", type: "danh từ" },
+                { hanzi: "冰箱", pinyin: "bīngxiāng", vie: "tủ lạnh", type: "danh từ" },
+                { hanzi: "不但", pinyin: "búdàn", vie: "không những", type: "liên từ" },
+                { hanzi: "而且", pinyin: "érqiě", vie: "mà còn", type: "liên từ" },
+                { hanzi: "才", pinyin: "cái", vie: "mới", type: "phó từ" },
+                { hanzi: "菜单", pinyin: "càidān", vie: "thực đơn", type: "danh từ" },
+                { hanzi: "参加", pinyin: "cānjiā", vie: "tham gia", type: "động từ" },
+                { hanzi: "草", pinyin: "cǎo", vie: "cỏ", type: "danh từ" },
+                { hanzi: "层", pinyin: "céng", vie: "tầng", type: "lượng từ" },
+                { hanzi: "差", pinyin: "chà", vie: "kém, thiếu", type: "tính/động từ" },
+                { hanzi: "超市", pinyin: "chāoshì", vie: "siêu thị", type: "danh từ" },
+                { hanzi: "衬衫", pinyin: "chènshān", vie: "áo sơ mi", type: "danh từ" },
+                { hanzi: "成绩", pinyin: "chéngjì", vie: "thành tích", type: "danh từ" },
+                { hanzi: "城市", pinyin: "chéngshì", vie: "thành phố", type: "danh từ" },
+                { hanzi: "迟到", pinyin: "chídào", vie: "muộn giờ", type: "động từ" },
+                { hanzi: "出现", pinyin: "chūxiàn", vie: "xuất hiện", type: "động từ" },
+                { hanzi: "除了", pinyin: "chúle", vie: "ngoài ra", type: "giới từ" },
+                { hanzi: "春", pinyin: "chūn", vie: "mùa xuân", type: "danh từ" },
+                { hanzi: "词典", pinyin: "cídiǎn", vie: "từ điển", type: "danh từ" },
+                { hanzi: "聪明", pinyin: "cōngming", vie: "thông minh", type: "tính từ" },
+                { hanzi: "打扫", pinyin: "dǎsǎo", vie: "quét dọn", type: "động từ" },
+                { hanzi: "打算", pinyin: "dǎsuàn", vie: "dự định", type: "động/danh từ" },
+                { hanzi: "带", pinyin: "dài", vie: "mang theo", type: "động từ" },
+                { hanzi: "担心", pinyin: "dānxīn", vie: "lo lắng", type: "động từ" },
+                { hanzi: "蛋糕", pinyin: "dàngāo", vie: "bánh gato", type: "danh từ" },
+                { hanzi: "当然", pinyin: "dāngrán", vie: "đương nhiên", type: "phó từ" },
+                { hanzi: "地", pinyin: "de", vie: "trợ từ", type: "trợ từ" },
+                { hanzi: "灯", pinyin: "dēng", vie: "đèn", type: "danh từ" },
+                { hanzi: "地方", pinyin: "dìfang", vie: "nơi chốn", type: "danh từ" },
+                { hanzi: "地图", pinyin: "dìtú", vie: "bản đồ", type: "danh từ" },
+                { hanzi: "地铁", pinyin: "dìtiě", vie: "tàu điện ngầm", type: "danh từ" },
+                { hanzi: "电梯", pinyin: "diàntī", vie: "thang máy", type: "danh từ" },
+                { hanzi: "电子邮件", pinyin: "diànzǐ yóujiàn", vie: "thư điện tử", type: "danh từ" },
+                { hanzi: "东", pinyin: "dōng", vie: "phía đông", type: "danh từ" },
+                { hanzi: "动物", pinyin: "dòngwù", vie: "động vật", type: "danh từ" },
+                { hanzi: "短", pinyin: "duǎn", vie: "ngắn", type: "tính từ" },
+                { hanzi: "段", pinyin: "duàn", vie: "đoạn", type: "lượng từ" },
+                { hanzi: "锻炼", pinyin: "duànliàn", vie: "rèn luyện", type: "động từ" },
+                { hanzi: "多么", pinyin: "duōme", vie: "biết bao", type: "phó từ" },
+                { hanzi: "饿", pinyin: "è", vie: "đói", type: "tính từ" },
+                { hanzi: "耳朵", pinyin: "ěrduo", vie: "tai", type: "danh từ" },
+                { hanzi: "发", pinyin: "fā", vie: "gửi, phát", type: "động từ" },
+                { hanzi: "发生", pinyin: "fāshēng", vie: "phát sinh", type: "động từ" },
+                { hanzi: "方便", pinyin: "fāngbiàn", vie: "tiện lợi", type: "tính từ" },
+                { hanzi: "放", pinyin: "fàng", vie: "đặt, để", type: "động từ" },
+                { hanzi: "放心", pinyin: "fàngxīn", vie: "yên tâm", type: "động từ" },
+                { hanzi: "分", pinyin: "fēn", vie: "điểm, chia", type: "danh/động từ" },
+                { hanzi: "附近", pinyin: "fùjìn", vie: "gần đây", type: "danh từ" },
+                { hanzi: "复习", pinyin: "fùxí", vie: "ôn tập", type: "động từ" },
+                { hanzi: "干净", pinyin: "gānjìng", vie: "sạch sẽ", type: "tính từ" },
+                { hanzi: "感冒", pinyin: "gǎnmào", vie: "cảm cúm", type: "động/danh từ" },
+                { hanzi: "感兴趣", pinyin: "gǎn xìngqù", vie: "hứng thú", type: "động từ" },
+                { hanzi: "刚才", pinyin: "gāngcái", vie: "vừa nãy", type: "danh từ" },
+                { hanzi: "个子", pinyin: "gèzi", vie: "vóc dáng", type: "danh từ" },
+                { hanzi: "根据", pinyin: "gēnjù", vie: "dựa theo", type: "giới từ" },
+                { hanzi: "跟", pinyin: "gēn", vie: "cùng với", type: "giới từ" },
+                { hanzi: "更", pinyin: "gèng", vie: "hơn nữa", type: "phó từ" },
+                { hanzi: "公斤", pinyin: "gōngjīn", vie: "kg (kilôgam)", type: "lượng từ" },
+                { hanzi: "公园", pinyin: "gōngyuán", vie: "công viên", type: "danh từ" },
+                { hanzi: "故事", pinyin: "gùshi", vie: "câu chuyện", type: "danh từ" },
+                { hanzi: "刮风", pinyin: "guā fēng", vie: "thổi gió", type: "động từ" },
+                { hanzi: "关", pinyin: "guān", vie: "đóng", type: "động từ" },
+                { hanzi: "关系", pinyin: "guānxi", vie: "quan hệ", type: "danh từ" },
+                { hanzi: "关心", pinyin: "guānxīn", vie: "quan tâm", type: "động/danh từ" },
+                { hanzi: "关于", pinyin: "guānyú", vie: "về... (vấn đề)", type: "giới từ" },
+                { hanzi: "国家", pinyin: "guójiā", vie: "quốc gia", type: "danh từ" },
+                { hanzi: "过去", pinyin: "guòqù", vie: "quá khứ", type: "danh từ" },
+                { hanzi: "害怕", pinyin: "hàipà", vie: "sợ hãi", type: "động từ" },
+                { hanzi: "黑板", pinyin: "hēibǎn", vie: "bảng đen", type: "danh từ" },
+                { hanzi: "后来", pinyin: "hòulái", vie: "sau đó", type: "danh từ" },
+                { hanzi: "护照", pinyin: "hùzhào", vie: "hộ chiếu", type: "danh từ" },
+                { hanzi: "花", pinyin: "huā", vie: "hoa / tiêu tiền", type: "danh/động từ" },
+                { hanzi: "坏", pinyin: "huài", vie: "hỏng, xấu", type: "tính từ" },
+                { hanzi: "环境", pinyin: "huánjìng", vie: "môi trường", type: "danh từ" },
+                { hanzi: "换", pinyin: "huàn", vie: "đổi", type: "động từ" },
+                { hanzi: "黄河", pinyin: "Huáng Hé", vie: "sông Hoàng Hà", type: "danh từ riêng" },
+                { hanzi: "会议", pinyin: "huìyì", vie: "hội nghị", type: "danh từ" },
+                { hanzi: "或者", pinyin: "huòzhě", vie: "hoặc là", type: "liên từ" },
+                { hanzi: "几乎", pinyin: "jīhū", vie: "hầu như", type: "phó từ" },
+                { hanzi: "机会", pinyin: "jīhuì", vie: "cơ hội", type: "danh từ" },
+                { hanzi: "极", pinyin: "jí", vie: "cực kỳ", type: "phó từ" },
+                { hanzi: "季节", pinyin: "jìjié", vie: "mùa", type: "danh từ" },
+                { hanzi: "检查", pinyin: "jiǎnchá", vie: "kiểm tra", type: "động/danh từ" },
+                { hanzi: "简单", pinyin: "jiǎndān", vie: "đơn giản", type: "tính từ" },
+                { hanzi: "见面", pinyin: "jiàn miàn", vie: "gặp mặt", type: "động từ" },
+                { hanzi: "健康", pinyin: "jiànkāng", vie: "sức khỏe", type: "tính/danh từ" },
+                { hanzi: "讲", pinyin: "jiǎng", vie: "giảng, kể", type: "động từ" },
+                { hanzi: "角", pinyin: "jiǎo", vie: "hào (tiền)", type: "lượng từ" },
+                { hanzi: "脚", pinyin: "jiǎo", vie: "bàn chân", type: "danh từ" },
+                { hanzi: "结婚", pinyin: "jié hūn", vie: "kết hôn", type: "động từ" },
+                { hanzi: "结束", pinyin: "jiéshù", vie: "kết thúc", type: "động từ" },
+                { hanzi: "解决", pinyin: "jiějué", vie: "giải quyết", type: "động từ" },
+                { hanzi: "句子", pinyin: "jùzi", vie: "câu", type: "danh từ" },
+                { hanzi: "觉得", pinyin: "juéde", vie: "cảm thấy", type: "động từ" },
+                { hanzi: "决定", pinyin: "juédìng", vie: "quyết định", type: "động/danh từ" },
+                { hanzi: "渴", pinyin: "kě", vie: "khát", type: "tính từ" },
+                { hanzi: "可爱", pinyin: "kě'ài", vie: "đáng yêu", type: "tính từ" },
+                { hanzi: "刻", pinyin: "kè", vie: "khắc (15 phút)", type: "lượng từ" },
+                { hanzi: "客k", pinyin: "kè", vie: "khách", type: "danh từ" },
+                { hanzi: "空气", pinyin: "kōngqì", vie: "không khí", type: "danh từ" },
+                { hanzi: "快", pinyin: "kuài", vie: "sắp", type: "phó từ" },
+                { hanzi: "筷子", pinyin: "kuàizi", vie: "đũa", type: "danh từ" },
+                { hanzi: "困", pinyin: "kùn", vie: "buồn ngủ", type: "tính từ" },
+                { hanzi: "困难", pinyin: "kùnnán", vie: "khó khăn", type: "tính/danh từ" },
+                { hanzi: "拉", pinyin: "lā", vie: "kéo", type: "động từ" },
+                { hanzi: "来", pinyin: "lái", vie: "đến (phó từ chỉ khoảng)", type: "phó từ" },
+                { hanzi: "蓝", pinyin: "lán", vie: "màu xanh lam", type: "tính từ" },
+                { hanzi: "老", pinyin: "lǎo", vie: "già", type: "tính từ" },
+                { hanzi: "离开", pinyin: "líkāi", vie: "rời khỏi", type: "động từ" },
+                { hanzi: "历史", pinyin: "lìshǐ", vie: "lịch sử", type: "danh từ" },
+                { hanzi: "脸", pinyin: "liǎn", vie: "mặt", type: "danh từ" },
+                { hanzi: "练习", pinyin: "liànxí", vie: "luyện tập", type: "động/danh từ" },
+                { hanzi: "辆", pinyin: "liàng", vie: "chiếc (xe)", type: "lượng từ" },
+                { hanzi: "了解", pinyin: "liǎojiě", vie: "hiểu rõ", type: "động từ" },
+                { hanzi: "邻居", pinyin: "línjū", vie: "láng giềng", type: "danh từ" },
+                { hanzi: "留学", pinyin: "liú xué", vie: "du học", type: "động từ" },
+                { hanzi: "楼", pinyin: "lóu", vie: "tòa nhà, lầu", type: "danh từ" },
+                { hanzi: "绿", pinyin: "lǜ", vie: "màu xanh lá", type: "tính từ" },
+                { hanzi: "马", pinyin: "mǎ", vie: "ngựa", type: "danh từ" },
+                { hanzi: "马上", pinyin: "mǎshàng", vie: "ngay lập tức", type: "phó từ" },
+                { hanzi: "满意", pinyin: "mǎnyì", vie: "hài lòng", type: "tính từ" },
+                { hanzi: "帽子", pinyin: "màozi", vie: "mũ, nón", type: "danh từ" },
+                { hanzi: "米", pinyin: "mǐ", vie: "mét", type: "lượng từ" },
+                { hanzi: "面包", pinyin: "miànbāo", vie: "bánh mì", type: "danh từ" },
+                { hanzi: "面条", pinyin: "miàntiáo", vie: "mì sợi", type: "danh từ" },
+                { hanzi: "明白", pinyin: "míngbai", vie: "rõ ràng, hiểu", type: "tính/động từ" },
+                { hanzi: "拿", pinyin: "ná", vie: "cầm, lấy", type: "động từ" },
+                { hanzi: "奶奶", pinyin: "nǎinai", vie: "bà nội", type: "danh từ" },
+                { hanzi: "南", pinyin: "nán", vie: "phía nam", type: "danh từ" },
+                { hanzi: "难", pinyin: "nán", vie: "khó", type: "tính từ" },
+                { hanzi: "难过", pinyin: "nánguò", vie: "buồn bã", type: "tính từ" },
+                { hanzi: "年级", pinyin: "niánjí", vie: "khối lớp", type: "danh từ" },
+                { hanzi: "年轻", pinyin: "niánqīng", vie: "trẻ trung", type: "tính từ" },
+                { hanzi: "鸟", pinyin: "niǎo", vie: "chim", type: "danh từ" },
+                { hanzi: "努力", pinyin: "nǔlì", vie: "nỗ lực", type: "tính/động từ" },
+                { hanzi: "偶尔", pinyin: "ǒu'ěr", vie: "thỉnh thoảng", type: "phó từ" },
+                { hanzi: "盘子", pinyin: "pánzi", vie: "cái đĩa", type: "danh từ" },
+                { hanzi: "胖", pinyin: "pàng", vie: "béo, mập", type: "tính từ" },
+                { hanzi: "啤酒", pinyin: "píjiǔ", vie: "bia", type: "danh từ" },
+                { hanzi: "普通话", pinyin: "pǔtōnghuà", vie: "tiếng phổ thông", type: "danh từ" },
+                { hanzi: "其实", pinyin: "qíshí", vie: "kỳ thực, thực ra", type: "phó từ" },
+                { hanzi: "其他", pinyin: "qítā", vie: "khác", type: "đại từ" },
+                { hanzi: "奇怪", pinyin: "qíguài", vie: "kỳ lạ", type: "tính từ" },
+                { hanzi: "铅笔", pinyin: "qiānbǐ", vie: "bút chì", type: "danh từ" },
+                { hanzi: "清楚", pinyin: "qīngchu", vie: "rõ ràng", type: "tính từ" },
+                { hanzi: "秋", pinyin: "qiū", vie: "mùa thu", type: "danh từ" },
+                { hanzi: "裙子", pinyin: "qúnzi", vie: "váy", type: "danh từ" },
+                { hanzi: "然后", pinyin: "ránhòu", vie: "sau đó", type: "liên từ" },
+                { hanzi: "热情", pinyin: "rèqíng", vie: "nhiệt tình", type: "tính từ" },
+                { hanzi: "认为", pinyin: "rènwéi", vie: "cho rằng", type: "động từ" },
+                { hanzi: "认真", pinyin: "rènzhēn", vie: "chăm chỉ, nghiêm túc", type: "tính từ" },
+                { hanzi: "容易", pinyin: "róngyì", vie: "dễ dàng", type: "tính từ" },
+                { hanzi: "如果", pinyin: "rúguǒ", vie: "nếu như", type: "liên từ" },
+                { hanzi: "伞", pinyin: "sǎn", vie: "ô, dù", type: "danh từ" },
+                { hanzi: "上网", pinyin: "shàng wǎng", vie: "lên mạng", type: "động từ" },
+                { hanzi: "生意", pinyin: "shēngyi", vie: "buôn bán, kinh doanh", type: "danh từ" },
+                { hanzi: "声音", pinyin: "shēngyīn", vie: "âm thanh", type: "danh từ" },
+                { hanzi: "世界", pinyin: "shìjiè", vie: "thế giới", type: "danh từ" },
+                { hanzi: "瘦", pinyin: "shòu", vie: "gầy", type: "tính từ" },
+                { hanzi: "叔叔", pinyin: "shūshu", vie: "chú", type: "danh từ" },
+                { hanzi: "舒服", pinyin: "shūfu", vie: "thoải mái", type: "tính từ" },
+                { hanzi: "树", pinyin: "shù", vie: "cây", type: "danh từ" },
+                { hanzi: "数学", pinyin: "shùxué", vie: "môn toán", type: "danh từ" },
+                { hanzi: "司机", pinyin: "sījī", vie: "tài xế", type: "danh từ" },
+                { hanzi: "虽然", pinyin: "suīrán", vie: "mặc dù", type: "liên từ" },
+                { hanzi: "太阳", pinyin: "tàiyáng", vie: "mặt trời", type: "danh từ" },
+                { hanzi: "糖", pinyin: "táng", vie: "kẹo, đường", type: "danh từ" },
+                { hanzi: "特别", pinyin: "tèbié", vie: "đặc biệt", type: "phó/tính từ" },
+                { hanzi: "疼", pinyin: "téng", vie: "đau", type: "tính từ" },
+                { hanzi: "提高", pinyin: "tígāo", vie: "nâng cao", type: "động từ" },
+                { hanzi: "体育", pinyin: "tǐyù", vie: "thể dục", type: "danh từ" },
+                { hanzi: "甜", pinyin: "tián", vie: "ngọt", type: "tính từ" },
+                { hanzi: "条", pinyin: "tiáo", vie: "con, cái (đồ dài)", type: "lượng từ" },
+                { hanzi: "同事", pinyin: "tóngshì", vie: "đồng nghiệp", type: "danh từ" },
+                { hanzi: "同意", pinyin: "tóngyì", vie: "đồng ý", type: "động từ" },
+                { hanzi: "头发", pinyin: "tóufa", vie: "tóc", type: "danh từ" },
+                { hanzi: "突然", pinyin: "tūrán", vie: "đột nhiên", type: "phó/tính từ" },
+                { hanzi: "图书馆", pinyin: "túshūguǎn", vie: "thư viện", type: "danh từ" },
+                { hanzi: "腿", pinyin: "tuǐ", vie: "chân", type: "danh từ" },
+                { hanzi: "完成", pinyin: "wánchéng", vie: "hoàn thành", type: "động từ" },
+                { hanzi: "碗", pinyin: "wǎn", vie: "cái bát", type: "danh/lượng từ" },
+                { hanzi: "万", pinyin: "wàn", vie: "vạn, mười nghìn", type: "số từ" },
+                { hanzi: "习惯", pinyin: "xíguàn", vie: "thói quen", type: "danh/động từ" },
+                { hanzi: "洗手间", pinyin: "xǐshǒujiān", vie: "nhà vệ sinh", type: "danh từ" },
+                { hanzi: "洗澡", pinyin: "xǐ zǎo", vie: "tắm", type: "động từ" },
+                { hanzi: "夏", pinyin: "xià", vie: "mùa hạ", type: "danh từ" },
+                { hanzi: "香蕉", pinyin: "xiāngjiāo", vie: "chuối", type: "danh từ" },
+                { hanzi: "相同", pinyin: "xiāngtóng", vie: "giống nhau", type: "tính từ" },
+                { hanzi: "相信", pinyin: "xiāngxìn", vie: "tin tưởng", type: "động từ" },
+                { hanzi: "像", pinyin: "xiàng", vie: "giống như", type: "động từ" },
+                { hanzi: "小心", pinyin: "xiǎoxīn", vie: "cẩn thận", type: "động từ" },
+                { hanzi: "校长", pinyin: "xiàozhǎng", vie: "hiệu trưởng", type: "danh từ" },
+                { hanzi: "鞋", pinyin: "xié", vie: "giày", type: "danh từ" },
+                { hanzi: "新闻", pinyin: "xīnwén", vie: "tin tức", type: "danh từ" },
+                { hanzi: "新鲜", pinyin: "xīnxiān", vie: "tươi mới", type: "tính từ" },
+                { hanzi: "信用卡", pinyin: "xìnyòngkǎ", vie: "thẻ tín dụng", type: "danh từ" },
+                { hanzi: "行", pinyin: "xíng", vie: "được", type: "động từ" },
+                { hanzi: "行李箱", pinyin: "xínglǐxiāng", vie: "vali", type: "danh từ" },
+                { hanzi: "熊猫", pinyin: "xióngmāo", vie: "gấu trúc", type: "danh từ" },
+                { hanzi: "需要", pinyin: "xūyào", vie: "cần", type: "động từ" },
+                { hanzi: "选择", pinyin: "xuǎnzé", vie: "lựa chọn", type: "động/danh từ" },
+                { hanzi: "要求", pinyin: "yāoqiú", vie: "yêu cầu", type: "động/danh từ" },
+                { hanzi: "爷爷", pinyin: "yéye", vie: "ông nội", type: "danh từ" },
+                { hanzi: "一般", pinyin: "yībān", vie: "bình thường", type: "tính/phó từ" },
+                { hanzi: "一边", pinyin: "yībiān", vie: "vừa... vừa...", type: "liên từ" },
+                { hanzi: "一定会", pinyin: "yīdìnghuì", vie: "nhất định sẽ", type: "phó từ" },
+                { hanzi: "一共", pinyin: "yīgòng", vie: "tổng cộng", type: "phó từ" },
+                { hanzi: "一会儿", pinyin: "yīhuìr", vie: "một lát", type: "danh từ" },
+                { hanzi: "一样", pinyin: "yīyàng", vie: "giống nhau", type: "tính từ" },
+                { hanzi: "一直", pinyin: "yīzhí", vie: "luôn luôn, thẳng", type: "phó từ" },
+                { hanzi: "以前", pinyin: "yǐqián", vie: "trước đây", type: "danh từ" },
+                { hanzi: "以后", pinyin: "yǐhòu", vie: "sau này", type: "danh từ" },
+                { hanzi: "以为", pinyin: "yǐwéi", vie: "cứ tưởng", type: "động từ" },
+                { hanzi: "音乐", pinyin: "yīnyuè", vie: "âm nhạc", type: "danh từ" },
+                { hanzi: "银行", pinyin: "yínháng", vie: "ngân hàng", type: "danh từ" },
+                { hanzi: "应该", pinyin: "yīnggāi", vie: "nên", type: "động từ" },
+                { hanzi: "影响", pinyin: "yǐngxiǎng", vie: "ảnh hưởng", type: "động/danh từ" },
+                { hanzi: "用", pinyin: "yòng", vie: "dùng", type: "động từ" },
+                { hanzi: "游戏", pinyin: "yóuxì", vie: "trò chơi", type: "danh từ" },
+                { hanzi: "有名", pinyin: "yǒumíng", vie: "nổi tiếng", type: "tính từ" },
+                { hanzi: "又", pinyin: "yòu", vie: "lại (đã lặp lại)", type: "phó từ" },
+                { hanzi: "遇到", pinyin: "yùdào", vie: "gặp phải", type: "động từ" },
+                { hanzi: "元", pinyin: "yuán", vie: "nhân dân tệ (tệ)", type: "lượng từ" },
+                { hanzi: "愿意", pinyin: "yuànyì", vie: "bằng lòng", type: "động từ" },
+                { hanzi: "月亮", pinyin: "yuèliang", vie: "mặt trăng", type: "danh từ" },
+                { hanzi: "越", pinyin: "yuè", vie: "càng... càng...", type: "phó từ" },
+                { hanzi: "站", pinyin: "zhàn", vie: "đứng, trạm", type: "động/danh từ" },
+                { hanzi: "张", pinyin: "zhāng", vie: "tấm, tờ", type: "lượng từ" },
+                { hanzi: "照顾", pinyin: "zhàogù", vie: "chăm sóc", type: "động từ" },
+                { hanzi: "照片", pinyin: "zhàopiàn", vie: "bức ảnh", type: "danh từ" },
+                { hanzi: "照相机", pinyin: "zhàoxiàngjī", vie: "máy chụp ảnh", type: "danh từ" },
+                { hanzi: "只", pinyin: "zhǐ", vie: "chỉ", type: "phó từ" },
+                { hanzi: "中间", pinyin: "zhōngjiān", vie: "ở giữa", type: "danh từ" },
+                { hanzi: "终于", pinyin: "zhōngyú", vie: "cuối cùng", type: "phó từ" },
+                { hanzi: "种", pinyin: "zhǒng", vie: "loại", type: "lượng từ" },
+                { hanzi: "重要", pinyin: "zhòngyào", vie: "quan trọng", type: "tính từ" },
+                { hanzi: "周末", pinyin: "zhōumò", vie: "cuối tuần", type: "danh từ" },
+                { hanzi: "主要", pinyin: "zhǔyào", vie: "chủ yếu", type: "tính từ" },
+                { hanzi: "注意", pinyin: "zhùyì", vie: "chú ý", type: "động từ" },
+                { hanzi: "祝", pinyin: "zhù", vie: "chúc", type: "động từ" },
+                { hanzi: "著名", pinyin: "zhùmíng", vie: "nổi tiếng", type: "tính từ" },
+                { hanzi: "字典", pinyin: "zìdiǎn", vie: "tự điển", type: "danh từ" },
+                { hanzi: "自己", pinyin: "zìjǐ", vie: "bản thân", type: "đại từ" },
+                { hanzi: "总是", pinyin: "zǒngshì", vie: "luôn luôn", type: "phó từ" },
+                { hanzi: "最近", pinyin: "zuìjìn", vie: "gần đây", type: "danh/phó từ" },
+                { hanzi: "作业", pinyin: "zuòyè", vie: "bài tập về nhà", type: "danh từ" },
+                { hanzi: "作用", pinyin: "zuòyòng", vie: "tác dụng", type: "danh từ" }
+            ]
+        };
+
+        // --- 2. DỮ LIỆU NGỮ PHÁP HSK 1-3 ---
+        const grammarData = [
+            { level: "HSK 1", title: "Cấu trúc câu cơ bản: S + V + O", explain: "Chủ ngữ đứng trước, tiếp theo là động từ và tân ngữ chỉ đối tượng nhận hành động.", examples: [{ zh: "我吃饭。", vi: "Tôi ăn cơm." }, { zh: "他喝水。", vi: "Anh ấy uống nước." }] },
+            { level: "HSK 1", title: "Câu hỏi với trợ từ 吗 (ma)", explain: "Dùng từ '吗' đặt ở cuối câu trần thuật để biến câu đó thành câu hỏi Yes/No.", examples: [{ zh: "你是中国人吗？", vi: "Bạn có phải người Trung Quốc không?" }] },
+            { level: "HSK 2", title: "Động từ năng nguyện 会 (huì)", explain: "Diễn tả khả năng thông qua quá trình học tập hoặc có kỹ năng làm gì đó.", examples: [{ zh: "我会说汉语。", vi: "Tôi biết nói tiếng Trung." }] },
+            { level: "HSK 2", title: "So sánh hơn với 比 (bǐ)", explain: "Dùng để so sánh A hơn B. Cấu trúc: A + 比 + B + Tính từ.", examples: [{ zh: "今天比昨天热。", vi: "Hôm nay nóng hơn hôm qua." }] },
+            { level: "HSK 3", title: "Câu chữ 把 (bǎ)", explain: "Nhấn mạnh vào kết quả hoặc sự thay đổi của tân ngữ. Cấu trúc: S + 把 + O + V + thành phần khác.", examples: [{ zh: "请把 门 打开。", vi: "Xin hãy mở cửa ra." }] },
+            { level: "HSK 3", title: "Liên từ 虽然... 但是... (suī rán... dàn shì)", explain: "Biểu thị quan hệ nhượng bộ: Mặc dù... nhưng...", examples: [{ zh: "虽然很累，但是很高兴。", vi: "Mặc dù rất mệt, nhưng rất vui." }] }
+        ];
+
+        // --- 3. LOGIC HỆ THỐNG (UI & SCRIPT) ---
+        const savedUser = localStorage.getItem('hskUsername') || 'KL';
+        document.getElementById('main-username').innerText = savedUser;
+        document.getElementById('user-name-display').innerText = savedUser;
+        document.getElementById('footer-username').innerText = savedUser;
+        document.getElementById('username-input').value = savedUser;
+
+        function openSettings() { document.getElementById('settings-modal').classList.remove('hidden'); }
+        function closeSettings() { document.getElementById('settings-modal').classList.add('hidden'); }
+        function saveUsername() {
+            const newName = document.getElementById('username-input').value;
+            localStorage.setItem('hskUsername', newName);
+            location.reload();
+        }
+
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('-translate-y-full');
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+           link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('-translate-y-full'));
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
+
+        window.onload = function() {
+            loadVocab('hsk1');
+            loadGrammar();
+            initQuiz();
+        };
+
+        function loadVocab(level) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active', 'bg-klBlue', 'text-bgDark'));
+            document.getElementById(`btn-${level}`).classList.add('active', 'bg-klBlue', 'text-bgDark');
+
+            const grid = document.getElementById('vocab-grid');
+            grid.innerHTML = ''; 
+            const words = hskData[level];
+            
+            words.forEach(word => {
+                const cardHtml = `
+                    <div class="flip-card-inner perspective cursor-pointer group" onclick="flipAndSpeak(this, '${word.hanzi}')">
+                        <div class="relative preserve-3d w-full h-full rounded-3xl border border-slate-700 shadow-xl bg-cardDark p-6 flex flex-col justify-between">
+                            <div class="backface-hidden absolute inset-0 w-full h-full flex flex-col justify-center items-center p-4 text-center">
+                                <div class="text-xs font-semibold text-klPink uppercase tracking-widest mb-3">${level.toUpperCase()} | ${word.type}</div>
+                                <div class="text-6xl font-medium text-white font-serif tracking-tight leading-none">${word.hanzi}</div>
+                                <div class="text-xs text-textMuted mt-5 opacity-0 group-hover:opacity-100 transition-opacity">(Bấm để lật & nghe)</div>
+                            </div>
+                            <div class="backface-hidden my-rotate-y-180 absolute inset-0 w-full h-full flex flex-col justify-center items-center p-4 text-center bg-slate-800 rounded-3xl">
+                                <div class="text-2xl font-semibold text-klBlue mb-3 tracking-tight">${word.pinyin}</div>
+                                <div class="text-xl font-medium text-white mb-1">${word.vie}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.insertAdjacentHTML('beforeend', cardHtml);
+            });
+        }
+
+        function flipAndSpeak(cardElement, text) {
+            const cardInner = cardElement.querySelector('.preserve-3d');
+            cardInner.classList.toggle('my-rotate-y-180');
+            const isFlipped = cardInner.classList.contains('my-rotate-y-180');
+            if(isFlipped) {
+                setTimeout(() => { speakText(text); }, 300);
+            } else {
+                window.speechSynthesis.cancel();
+            }
+        }
+
+        function speakText(text) {
+             if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                let utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-CN';
+                utterance.rate = 0.8;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function loadGrammar() {
+            const container = document.getElementById('grammar-list');
+            container.innerHTML = '';
+            grammarData.forEach(item => {
+                const exHtml = item.examples.map(ex => `<div class="mt-3 pt-3 border-t border-slate-700"><p class="text-lg text-klBlue font-serif">${ex.zh}</p><p class="text-sm text-textMuted">${ex.vi}</p></div>`).join('');
+                const cardHtml = `
+                    <div class="bg-cardDark p-8 rounded-3xl border border-slate-700 shadow-lg">
+                        <span class="text-xs font-bold bg-klPink/10 text-klPink px-3 py-1 rounded-full">${item.level}</span>
+                        <h4 class="text-2xl font-semibold text-white mt-4 mb-3">${item.title}</h4>
+                        <p class="text-textMuted mb-5">${item.explain}</p>
+                        <div class="bg-bgDark p-5 rounded-xl border border-slate-700">
+                            <p class="text-sm font-semibold text-white mb-2">Ví dụ:</p>
+                            ${exHtml}
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', cardHtml);
+            });
+        }
+
+        let currentQuizIndex = 0;
+        const quizBox = document.getElementById('quiz-box');
+        const quizQuestion = document.getElementById('quiz-question');
+        const quizOptions = document.getElementById('quiz-options');
+        const quizFeedback = document.getElementById('quiz-feedback');
+
+        const quizData = [
+            { q: "请问，'你'是什么意思？", a: ["Tôi", "Bạn", "Khỏe", "Ăn"], correct: 1 },
+            { q: "Chọn Pinyin đúng cho từ '学习':", a: ["gōng zuò", "xué xí", "yī shēng", "wǒ"], correct: 1 },
+            { q: "Điền vào chỗ trống: 我___医生。(Tôi là bác sĩ)", a: ["是", "吃", "喝", "叫"], correct: 0 },
+            { q: "Từ '爱' có nghĩa là gì?", a: ["Ghét", "Yêu", "Đi", "Mua"], correct: 1 }
+        ];
+
+        function initQuiz() {
+             showPracticeTab('quiz');
+             loadNextQuiz();
+        }
+
+        function loadNextQuiz() {
+             if(currentQuizIndex >= quizData.length) currentQuizIndex = 0;
+             const q = quizData[currentQuizIndex];
+             quizQuestion.innerText = q.q;
+             quizOptions.innerHTML = '';
+             quizFeedback.innerText = '';
+
+             q.a.forEach((option, index) => {
+                 const btn = `
+                    <button onclick="checkAnswer(${index}, ${q.correct})" class="text-left p-5 rounded-xl bg-bgDark border border-slate-700 hover:border-klBlue hover:bg-slate-900 transition text-white text-lg font-medium">
+                        ${String.fromCharCode(65+index)}. ${option}
+                    </button>
+                 `;
+                 quizOptions.insertAdjacentHTML('beforeend', btn);
+             });
+        }
+
+        function checkAnswer(selectedIndex, correctIndex) {
+            if(selectedIndex === correctIndex) {
+                quizFeedback.innerHTML = '<i class="fas fa-check-circle text-green-400 mr-2"></i> Chính xác!';
+                quizFeedback.classList.remove('text-red-400');
+                quizFeedback.classList.add('text-green-400');
+                currentQuizIndex++;
+                setTimeout(loadNextQuiz, 1000);
+            } else {
+                 quizFeedback.innerHTML = '<i class="fas fa-times-circle text-red-400 mr-2"></i> Sai rồi, thử lại nhé.';
+                 quizFeedback.classList.remove('text-green-400');
+                 quizFeedback.classList.add('text-red-400');
+            }
+        }
+
+        let currentTransMode = 'hv';
+        let currentTransData = null;
+
+        function showPracticeTab(tabId) {
+            document.querySelectorAll('.practice-tab').forEach(t => {
+                t.classList.remove('active', 'border-klPink', 'text-klPink');
+                t.classList.add('border-transparent', 'text-textMuted');
+            });
+            document.getElementById(`tab-${tabId}`).classList.add('active', 'border-klPink', 'text-klPink');
+            document.getElementById(`tab-${tabId}`).classList.remove('border-transparent', 'text-textMuted');
+
+            if(tabId === 'quiz') {
+                 quizBox.classList.remove('hidden');
+                 document.getElementById('translate-box').classList.add('hidden');
+            } else {
+                 quizBox.classList.add('hidden');
+                 document.getElementById('translate-box').classList.remove('hidden');
+                 loadTranslateData();
+            }
+        }
+
+        function loadTranslateData() {
+             const allWords = [...hskData.hsk1, ...hskData.hsk2, ...hskData.hsk3];
+             currentTransData = allWords[Math.floor(Math.random() * allWords.length)];
+
+             const sourceP = document.getElementById('trans-source');
+             document.getElementById('trans-input').value = '';
+             document.getElementById('trans-result').innerText = '';
+
+             if(currentTransMode === 'hv') {
+                 sourceP.innerText = currentTransData.hanzi;
+                 sourceP.classList.add('font-serif');
+             } else {
+                 sourceP.innerText = currentTransData.vie;
+                 sourceP.classList.remove('font-serif');
+             }
+        }
+
+        function practiceTranslate(mode) {
+            currentTransMode = mode;
+            showPracticeTab(mode === 'hv' ? 'hv' : 'vh');
+        }
+
+        function checkTranslation() {
+            const userInputValue = document.getElementById('trans-input').value.trim().toLowerCase();
+            const resultBox = document.getElementById('trans-result');
+            
+            if(!currentTransData) return;
+
+            let isCorrect = false;
+            if(currentTransMode === 'hv') {
+                // Kiểm tra nghĩa tiếng Việt hoặc pinyin
+                if(currentTransData.vie.toLowerCase().includes(userInputValue) || currentTransData.pinyin.toLowerCase() === userInputValue) {
+                    isCorrect = true;
+                }
+            } else {
+                // Kiểm tra chữ Hán
+                if(currentTransData.hanzi === userInputValue) {
+                    isCorrect = true;
+                }
+            }
+
+            if(isCorrect) {
+                resultBox.innerHTML = `<span class="text-green-400"><i class="fas fa-check mr-2"></i>Chính xác! Đáp án: ${currentTransMode === 'hv' ? currentTransData.vie : currentTransData.hanzi}</span>`;
+                setTimeout(loadTranslateData, 1500);
+            } else {
+                resultBox.innerHTML = `<span class="text-red-400"><i class="fas fa-times mr-2"></i>Chưa đúng, thử từ khác nhé!</span>`;
+            }
+        }
+    </script>
+</body>
+</html>
