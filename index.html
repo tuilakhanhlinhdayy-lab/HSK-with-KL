@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>HSK Vibe With KL - Master HSK 1-3</title>
+    <title>Web Học Tiếng Trung Của Rin và KLinh ❤</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -46,8 +46,8 @@
     <header class="sticky top-0 z-50 bg-bgDark/95 backdrop-blur-sm border-b border-slate-800">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center gap-2 text-klBlue">
-                <i class="fas fa-cloud-moon text-2xl"></i>
-                <span class="font-bold text-lg tracking-tight">HSK <span class="text-klPink">VIBE</span></span>
+                <i class="fas fa-heart text-klPink animate-bounce"></i>
+                <span class="font-bold text-sm md:text-base tracking-tight">Rin <span class="text-klPink">&</span> KLinh</span>
             </div>
             <div class="hidden md:flex items-center gap-1 bg-slate-900 p-1 rounded-full border border-slate-700 text-sm">
                 <a href="#home" class="px-4 py-2 rounded-full text-white/90 hover:bg-slate-800"><i class="fas fa-home mr-2 text-klBlue"></i>Trang Chủ</a>
@@ -57,7 +57,7 @@
             </div>
             <div class="flex items-center gap-3">
                 <span class="text-xs text-textMuted border border-slate-700 bg-slate-800 px-3 py-1 rounded-full">
-                    <i class="fas fa-user mr-1.5 text-klPink"></i> <span id="user-name-display">KL's Hub</span>
+                    <i class="fas fa-user-graduate mr-1.5 text-klPink"></i> Học viên: <span id="user-name-display" class="font-bold text-white">Rin</span>
                 </span>
                  <button onclick="openSettings()" class="text-textMuted hover:text-klPink"><i class="fas fa-cog"></i></button>
                 <button id="mobile-menu-toggle" class="md:hidden text-white"><i class="fas fa-bars"></i></button>
@@ -75,20 +75,21 @@
     </div>
 
     <main class="flex-grow container mx-auto px-4 py-8 pb-20">
-        <section id="home" class="text-center py-16 mb-16 bg-slate-900 rounded-3xl border border-slate-700 shadow-2xl">
-             <div class="inline-flex items-center gap-3 bg-slate-800 border border-slate-700 px-5 py-2 rounded-full mb-8 shadow-inner">
-                <i class="fas fa-star text-klPink animate-pulse"></i>
-                <span class="text-sm font-medium text-klBlue uppercase tracking-widest">Welcome back</span>
+        <section id="home" class="text-center py-16 mb-16 bg-slate-900 rounded-3xl border border-slate-700 shadow-2xl relative overflow-hidden">
+             <div class="absolute inset-0 bg-klPink/5 pattern-grid-lg opacity-10"></div>
+             <div class="inline-flex items-center gap-3 bg-slate-800 border border-slate-700 px-5 py-2 rounded-full mb-8 shadow-inner relative z-10">
+                <i class="fas fa-heart text-klPink animate-pulse"></i>
+                <span class="text-sm font-medium text-klBlue uppercase tracking-widest">Web Học Tiếng Trung Của Rin và KLinh</span>
             </div>
-            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tighter leading-[0.9]">
-                Học HSK <span class="text-klBlue">1</span>-<span class="text-klPink">3</span> <br>Cùng <span id="main-username">KL</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tighter leading-tight relative z-10">
+                Chinh Phục HSK 1-3 Cùng Nhau <br><span id="main-username" class="text-klPink">Rin</span> ❤ <span class="text-klBlue">KLinh</span>
             </h1>
-            <p class="text-xl text-textMuted max-w-xl mx-auto font-light leading-relaxed mb-10">
-                Hệ thống ôn tập theo từng cấp độ HSK chuyên sâu. Flashcard, ngữ pháp và trắc nghiệm phân loại riêng biệt.
+            <p class="text-xl text-textMuted max-w-xl mx-auto font-light leading-relaxed mb-10 relative z-10">
+                Không gian ôn tập tiếng Trung siêu đáng yêu được KLinh thiết kế riêng cho Rin mỗi ngày. Cố gắng lên nha! 🥰
             </p>
-             <div class="flex gap-4 justify-center">
-                <button onclick="scrollToSection('vocab')" class="bg-klBlue text-bgDark font-bold px-8 py-3 rounded-full shadow-lg hover:bg-sky-400 transition transform hover:-translate-y-1">Vào Học Từ Vựng</button>
-                <button onclick="scrollToSection('practice')" class="bg-klPink text-white font-bold px-8 py-3 rounded-full shadow-lg hover:bg-pink-400 transition transform hover:-translate-y-1">Luyện Tập Ngay</button>
+             <div class="flex gap-4 justify-center relative z-10">
+                <button onclick="scrollToSection('vocab')" class="bg-klBlue text-bgDark font-bold px-8 py-3 rounded-full shadow-lg hover:bg-sky-400 transition transform hover:-translate-y-1">Học Từ Vựng Thui</button>
+                <button onclick="scrollToSection('practice')" class="bg-klPink text-white font-bold px-8 py-3 rounded-full shadow-lg hover:bg-pink-400 transition transform hover:-translate-y-1">Luyện Tập Nào</button>
             </div>
         </section>
 
@@ -127,9 +128,8 @@
         <section id="practice" class="mb-20 scroll-mt-24 bg-slate-900 p-8 md:p-12 rounded-3xl border border-slate-700">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8 pb-4 border-b border-slate-800 gap-4">
                 <h2 class="text-3xl font-extrabold text-white tracking-tight flex items-center gap-3">
-                    <i class="fas fa-brain text-klPink"></i> Khu Vực Luyện Tập
+                    <i class="fas fa-brain text-klPink"></i> Khu Vực Luyện Tập Của Rin
                 </h2>
-                <!-- Bộ chọn cấp độ luyện tập tích hợp trực tiếp -->
                 <div class="flex items-center gap-2 bg-bgDark p-1.5 rounded-full border border-slate-700">
                     <span class="text-xs text-textMuted px-3 font-medium">Chọn cấp độ:</span>
                     <button onclick="setPracticeLevel('all')" class="level-pill active px-4 py-1.5 rounded-full text-xs" id="p-all">Tất cả</button>
@@ -149,12 +149,12 @@
                  <div id="quiz-box" class="bg-slate-800 p-8 rounded-2xl border border-slate-700">
                     <p id="quiz-question" class="text-2xl text-white font-medium mb-8">Câu hỏi?</p>
                     <div id="quiz-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
-                    <div id="quiz-feedback" class="mt-6 text-lg font-medium text-center h-7"></div>
+                    <div id="quiz-feedback" class="mt-6 text-lg font-medium text-center h-8"></div>
                  </div>
                 <div id="translate-box" class="hidden bg-slate-800 p-8 rounded-2xl border border-slate-700 text-center">
                      <p id="trans-source" class="text-4xl font-serif text-white mb-6"></p>
                      <input type="text" id="trans-input" placeholder="Nhập câu trả lời..." class="w-full max-w-md px-5 py-3 rounded-lg bg-bgDark border border-slate-700 text-white mb-4 focus:ring-2 focus:ring-klPink focus:border-klPink outline-none">
-                     <div id="trans-result" class="text-xl font-medium mb-6 h-7 text-klBlue"></div>
+                     <div id="trans-result" class="text-xl font-medium mb-6 h-8 text-klBlue"></div>
                      <button onclick="checkTranslation()" class="bg-klPink text-white px-6 py-2 rounded-lg font-medium">Kiểm tra</button>
                 </div>
             </div>
@@ -162,17 +162,16 @@
     </main>
 
     <footer class="w-full py-10 mt-auto border-t border-slate-800 bg-slate-900/50 text-center">
-        <div class="text-sm text-textMuted mb-2"> &copy; 2023 Master HSK Vibe. Build for <span id="footer-username">KL</span>. </div>
-        <div class="text-xs text-slate-600"> Powered by Tailwind, Inter, Font Awesome & AI. <i class="fas fa-heart text-klPink"></i> </div>
+        <div class="text-sm text-textMuted mb-2"> &copy; 2026 Web Học Tiếng Trung Của Rin và KLinh ❤ Made with love. </div>
     </footer>
     
     <div id="settings-modal" class="fixed inset-0 z-50 bg-bgDark/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
         <div class="bg-slate-900 p-8 rounded-3xl border border-slate-700 w-full max-w-md shadow-2xl">
             <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-white">Cài đặt tài khoản</h3>
+                <h3 class="text-2xl font-bold text-white">Cài đặt tên học viên</h3>
                 <button onclick="closeSettings()" class="text-textMuted hover:text-white"><i class="fas fa-times"></i></button>
             </div>
-             <label class="block text-sm text-textMuted mb-2">Tên của bạn (User Name)</label>
+             <label class="block text-sm text-textMuted mb-2">Tên người học (Bồ iu)</label>
              <input type="text" id="username-input" placeholder="Nhập tên..." class="w-full px-5 py-3 rounded-xl bg-bgDark border border-slate-700 text-white mb-6 focus:ring-2 focus:ring-klBlue outline-none">
              <button onclick="saveUsername()" class="w-full bg-klBlue text-bgDark font-bold py-3 rounded-xl hover:bg-sky-400 transition">Lưu thay đổi</button>
         </div>
@@ -716,13 +715,12 @@
             { level: "HSK 2", title: "Động từ năng nguyện 会 (huì)", explain: "Diễn tả khả năng thông qua quá trình học tập hoặc có kỹ năng làm gì đó.", examples: [{ zh: "我会说汉语。", vi: "Tôi biết nói tiếng Trung." }] },
             { level: "HSK 2", title: "So sánh hơn với 比 (bǐ)", explain: "Dùng để so sánh A hơn B. Cấu trúc: A + 比 + B + Tính từ.", examples: [{ zh: "今天比昨天热。", vi: "Hôm nay nóng hơn hôm qua." }] },
             { level: "HSK 3", title: "Câu chữ 把 (bǎ)", explain: "Nhấn mạnh vào kết quả hoặc sự thay đổi của tân ngữ. Cấu trúc: S + 把 + O + V + thành phần khác.", examples: [{ zh: "请把 门 打开。", vi: "Xin hãy mở cửa ra." }] },
-            { level: "HSK 3", title: "Liên từ虽然... 但是... (suī rán... dàn shì)", explain: "Biểu thị quan hệ nhượng bộ: Mặc dù... nhưng...", examples: [{ zh: "虽然很累，但是很高兴。", vi: "Mặc dù rất mệt, nhưng rất vui." }] }
+            { level: "HSK 3", title: "Liên từ 虽然... 但是... (suī rán... dàn shì)", explain: "Biểu thị quan hệ nhượng bộ: Mặc dù... nhưng...", examples: [{ zh: "虽然很累，但是很高兴。", vi: "Mặc dù rất mệt, nhưng rất vui." }] }
         ];
 
-        const savedUser = localStorage.getItem('hskUsername') || 'KL';
+        const savedUser = localStorage.getItem('hskUsername') || 'Rin';
         document.getElementById('main-username').innerText = savedUser;
         document.getElementById('user-name-display').innerText = savedUser;
-        document.getElementById('footer-username').innerText = savedUser;
         document.getElementById('username-input').value = savedUser;
 
         function openSettings() { document.getElementById('settings-modal').classList.remove('hidden'); }
@@ -845,6 +843,30 @@
         const quizOptions = document.getElementById('quiz-options');
         const quizFeedback = document.getElementById('quiz-feedback');
 
+        const praiseMessages = [
+            "OMG giỏi quáaaa! Thưởng cái ôm nhó ❤️",
+            "Trùi ui người yêu ai mà thông minh đỉnh chóp thế này!",
+            "Chồng nhà ai mà giỏi tiếng Trung quá cơ!",
+            "Đỉnh thế nhờ! Cứ thế này phát huy nha babi ✨",
+            "Xuất sắc luôn! Bé iu tự hào về Rin quá chừng 🥰"
+        ];
+
+        const cuteWrongMessages = [
+            "Cục cưng oiiiiiii, sai gòi làm lại iiii 🥺",
+            "Huhu bé dỗi nha, chọn lại đi babi ơi!",
+            "Sai mất tiếu rồiiii, phạt hun miếng mới cho làm tiếp hứ ứ ứ",
+            "Ơ kìa cưng ơi, nhầm nhọt xíu thui, chọn lại nhaaa ❤️",
+            "Đoán mò trượt rồi cục cưng êi, thử lại nàoooo!"
+        ];
+
+        function getRandomPraise() {
+            return praiseMessages[Math.floor(Math.random() * praiseMessages.length)];
+        }
+
+        function getRandomWrong() {
+            return cuteWrongMessages[Math.floor(Math.random() * cuteWrongMessages.length)];
+        }
+
         function setPracticeLevel(level) {
             currentPracticeLevel = level;
             document.querySelectorAll('#practice .level-pill').forEach(p => p.classList.remove('active', 'text-bgDark'));
@@ -906,14 +928,14 @@
 
         function checkAnswer(selectedIndex, correctIndex) {
             if(selectedIndex === correctIndex) {
-                quizFeedback.innerHTML = '<i class="fas fa-check-circle text-green-400 mr-2"></i> Chính xác!';
+                quizFeedback.innerHTML = `<i class="fas fa-heart text-klPink mr-2"></i> ${getRandomPraise()}`;
                 quizFeedback.classList.remove('text-red-400');
-                quizFeedback.classList.add('text-green-400');
-                setTimeout(loadNextQuiz, 1000);
+                quizFeedback.classList.add('text-klPink');
+                setTimeout(loadNextQuiz, 1500);
             } else {
-                 quizFeedback.innerHTML = '<i class="fas fa-times-circle text-red-400 mr-2"></i> Sai rồi, thử lại nhé.';
-                 quizFeedback.classList.remove('text-green-400');
-                 quizFeedback.classList.add('text-red-400');
+                 quizFeedback.innerHTML = `<i class="fas fa-face-sad-tear text-yellow-400 mr-2"></i> ${getRandomWrong()}`;
+                 quizFeedback.classList.remove('text-klPink');
+                 quizFeedback.classList.add('text-yellow-400');
             }
         }
 
@@ -980,10 +1002,10 @@
             }
 
             if(isCorrect) {
-                resultBox.innerHTML = `<span class="text-green-400"><i class="fas fa-check mr-2"></i>Chính xác! Đáp án: ${currentTransMode === 'hv' ? currentTransData.vie : currentTransData.hanzi}</span>`;
-                setTimeout(loadTranslateData, 1500);
+                resultBox.innerHTML = `<span class="text-klPink font-bold"><i class="fas fa-heart mr-2"></i>${getRandomPraise()} (Đáp án: ${currentTransMode === 'hv' ? currentTransData.vie : currentTransData.hanzi})</span>`;
+                setTimeout(loadTranslateData, 2000);
             } else {
-                resultBox.innerHTML = `<span class="text-red-400"><i class="fas fa-times mr-2"></i>Chưa đúng, thử từ khác nhé!</span>`;
+                resultBox.innerHTML = `<span class="text-yellow-400 font-medium"><i class="fas fa-face-sad-tear mr-2"></i>${getRandomWrong()}</span>`;
             }
         }
     </script>
